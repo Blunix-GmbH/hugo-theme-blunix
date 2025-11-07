@@ -1,0 +1,38 @@
+<section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "features-list" }}">
+    <div class="container relative md:mt-24 mt-16">
+        {{ with .Params.title }}
+        <div class="grid grid-cols-1 pb-4 text-center">
+            <h2 class="mb-8 md:text-4xl md:leading-normal text-3xl leading-normal font-semibold">{{ . }}</h2>
+        </div>
+        {{ end }}
+        <div class="grid lg:grid-cols-12 md:grid-cols-2 grid-cols-1 items-center mt-10 gap-[30px]">
+
+            <div class="lg:col-span-6">
+                <div class="lg:me-8 relative">
+                    <img src="{{ .Params.image.src }}" alt="{{ .Params.image.alt }}" class="rounded-lg shadow-md">
+                    <div class="overflow-hidden absolute lg:size-[500px] size-[320px] bg-blue-600/80 dark:bg-blue-600/80 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 -z-1 rounded-3xl md:block hidden"></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="grid grid-cols-1 gap-[30px]">
+                    {{- range .Params.items -}}
+                    <div class="group flex items-center relative overflow-hidden p-6 rounded-md shadow dark:shadow-gray-800 bg-gray-50 dark:bg-slate-800 hover:bg-blue-600 dark:hover:bg-blue-600 duration-500">
+                        <span class="text-blue-600 group-hover:text-white text-5xl font-semibold duration-500">
+                            <i class="{{ .icon }}"></i>
+                        </span>
+                        <div class="flex-1 ms-3">
+                            <h3 class="group-hover:text-white text-xl font-semibold duration-500">{{ .title }}</h3>
+                            <p class="text-2xl text-slate-500 group-hover:text-white/70 duration-500 mt-2">{{ .text }}</p>
+                        </div>
+                        <div class="absolute start-1 top-5 text-dark/[0.03] dark:text-white/[0.03] text-8xl group-hover:text-white/[0.04] duration-500">
+                            <i class="{{ .icon }}"></i>
+                        </div>
+                    </div>
+                    {{- end -}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

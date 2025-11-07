@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="light overflow-x-hidden scroll-smooth" dir="ltr">
+  {{- partial "head.html" . -}}
+  <body class="font-nunito overflow-x-hidden text-base text-black dark:bg-slate-900 dark:text-white">
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
+
+    <a href="#start" onclick="topFunction()" id="back-to-top" class="back-to-top fixed end-5 bottom-5 z-10 hidden size-9 rounded-full bg-blue-600 text-center text-lg leading-9 text-white"><i class="uil uil-arrow-up"></i></a>
+
+    <script src="/libs/feather-icons/feather.min.js"></script>
+    <script src="/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="/js/prism.min.js"></script>
+    <script defer src="/js/plugins.init.js"></script>
+    <script defer src="/js/app.js"></script>
+  </body>
+</html>

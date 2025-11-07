@@ -1,0 +1,41 @@
+- id: address
+  translation: "Address"
+
+- id: contact_us
+  translation: "Contact us"
+
+- id: contact
+  translation: "Contact"
+
+- id: name
+  translation: "Name"
+
+- id: company
+  translation: "Company"
+
+- id: phone
+  translation: "Phone"
+
+- id: message
+  translation: "Message"
+
+- id: submit
+  translation: "Submit"
+
+- id: email_address
+  translation: "Email address"
+
+- id: send_enquiry
+  translation: "Send Enquiry"
+
+- id: book_appointment
+  translation: "Book appointment"
+
+- id: form_success_title
+  translation: "Thank you for getting in touch."
+
+- id: form_success_message
+  translation: "Our team will make contact with you soon."
+
+- id: no_description_available
+  translation: "No description available."

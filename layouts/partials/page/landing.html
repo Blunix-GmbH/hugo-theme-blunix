@@ -1,0 +1,115 @@
+<section class="relative md:py-80 py-36 h-[90vh] flex flex-col justify-center" id="start">
+  <img src="{{ .Params.hero.background | default "/images/index/background.webp" }}" srcset="/images/index/background-sm.webp 600w, /images/index/background-md.webp 1200w, /images/index/background.webp 1400w" alt="background" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center">
+  <div class="absolute inset-0 bg-slate-900/50"></div>
+  <div class="container relative">
+    <div class="grid grid-cols-1 items-center mt-10">
+      <h1 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-7xl mb-5 text-white">{{ .Params.hero.title }}</h1>
+      {{ with .Params.hero.subtitle }}<p class="text-white text-lg max-w-xl lg:text-3xl"><b>{{ . | markdownify }}</b></p>{{ end }}
+      {{ with .Params.hero.cta }}
+      <div class="mt-8">
+        <a href="{{ .url | safeURL }}" title="{{ .title }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">{{ .label }}</a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ with .Params.servicesBanner }}
+<section class="bg-gray-800 text-white text-center py-10" id="services">
+  <p class="text-2xl md:text-3xl xl:text-4xl mx-auto">{{ . }}</p>
+</section>
+{{ end }}
+
+{{ with .Params.sections }}
+  {{ range . }}
+  <section class="relative bg-gray-50 dark:bg-slate-800 md:py-24 py-16" id="{{ .key }}">
+    <div class="container relative">
+      <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+        {{ if .image_left }}
+          <div class="lg:col-span-5 md:col-span-6">
+            <div class="grid grid-cols-12 gap-6 items-center">
+              <div class="col-span-12">
+                <div class="grid grid-cols-0 gap-0">
+                  <img src="{{ .image.src }}" alt="{{ .image.alt }}" class="w-full" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+        <div class="lg:col-span-7 md:col-span-6">
+          <div class="lg:ms-5">
+            <h2 class="md:text-4xl text-2xl md:leading-normal leading-normal font-semibold">{{ .title }}</h2>
+            {{ with .paragraphs }}{{ range . }}<p class="text-2xl text-slate-500 max-w-xl">{{ . | markdownify }}</p>{{ end }}{{ end }}
+            {{ with .subtitle }}<h3 class="md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ . }}</h3>{{ end }}
+            {{ with .paragraphs2 }}{{ range . }}<p class="text-2xl text-slate-500 max-w-xl">{{ . | markdownify }}</p>{{ end }}{{ end }}
+            {{ with .ctas }}
+            <div class="mt-6">
+              {{ range . }}<a href="{{ .url }}" title="{{ .title }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center {{ .classes | default "bg-blue-600 hover:bg-indigo-700 border-blue-600 hover:border-indigo-700" }} text-white rounded-md mt-2">{{ .label }}</a>{{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ if not .image_left }}
+          <div class="lg:col-span-5 md:col-span-6">
+            <div class="grid grid-cols-12 gap-6 items-center">
+              <div class="col-span-12">
+                <div class="grid grid-cols-0 gap-0">
+                  <img src="{{ .image.src }}" alt="{{ .image.alt }}" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}
+
+{{ with .Params.ethics }}
+<section class="relative overflow-hidden md:pt-0 pt-0 md:pb-20 pb-0" id="ethics">
+  <div class="container relative md:mt-24 mt-16">
+    <div class="grid grid-cols-1 pb-8 text-center">
+      <h2 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ .title }}</h2>
+    </div>
+    <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-[30px]">
+      <div class="relative order-1 md:order-2">
+        <div class="grid grid-cols-12 items-center gap-4 lg:gap-0">
+          <div class="col-span-6">
+            <div class="grid grid-cols-1 lg:gap-6 gap-4">
+              <img src="{{ .images.left_top.src }}" class="shadow rounded-md lg:max-w-[240px] mx-auto" alt="{{ .images.left_top.alt }}" loading="lazy">
+              <img src="{{ .images.left_bottom.src }}" class="shadow rounded-md lg:max-w-[240px] mx-auto" alt="{{ .images.left_bottom.alt }}" loading="lazy">
+            </div>
+          </div>
+          <div class="col-span-6">
+            <div class="grid grid-cols-1">
+              <img src="{{ .images.right.src }}" class="shadow rounded-md lg:max-w-[240px] mx-auto" alt="{{ .images.right.alt }}" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="overflow-hidden absolute md:size-[500px] size-[400px] bg-gradient-to-tl to-blue-600/20 via-blue-600/70 from-blue-600 bottom-1/2 translate-y-1/2 md:start-0 start-1/2 ltr:md:translate-x-0 ltr:-translate-x-1/2 rtl:md:translate-x-0 rtl:translate-x-1/2 -z-1 shadow-md shadow-blue-600/10 rounded-full"></div>
+      </div>
+      <div class="lg:me-8 order-2 md:order-1">
+        <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
+          {{ range $idx, $item := .items }}
+          <div class="relative shadow dark:shadow-gray-800 rounded-md overflow-hidden {{ if ne $idx 0 }}mt-4{{ end }}">
+            <h3 class="md:text-2xl text-base font-semibold">
+              <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-start" data-accordion-target="#accordion-{{ add $idx 1 }}" aria-expanded="false" aria-controls="accordion-{{ add $idx 1 }}">
+                <span>{{ $item.question }}</span>
+                <svg data-accordion-icon class="size-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+            </h3>
+            <div id="accordion-{{ add $idx 1 }}" class="hidden">
+              <div class="p-5">
+                <p class="text-slate-500 dark:text-gray-000 text-2xl">{{ $item.answer | markdownify }}</p>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+

@@ -1,0 +1,11 @@
+{{- $bg := . -}}
+{{- if $bg -}}
+  {{- if hasPrefix $bg "bg-" -}}
+    {{ $bg }}
+  {{- else -}}
+    bg-{{ $bg }}
+  {{- end -}}
+{{- else -}}
+  bg-white
+{{- end -}}
+

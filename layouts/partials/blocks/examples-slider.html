@@ -1,0 +1,32 @@
+<section class="relative" id="{{ .Params.id | default "examples" }}">
+  <div class="relative container mt-16 md:mt-16">
+    <div class="grid grid-cols-1 pb-8 text-center">
+      <h2 class="mb-4 text-4xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+    </div>
+    <div class="mt-8 grid grid-cols-1">
+      <div class="tiny-three-item">
+        {{ range .Params.items }}
+          <div class="tiny-slide text-center">
+            <div class="cursor-{{ if .problem }}e-resize{{ else }}grab{{ end }}">
+              <div class="mt-5 text-center">
+                {{ with .image }}<img src="{{ .src }}" class="mx-auto size-14 rounded-full shadow-md" alt="{{ .alt }}" />{{ end }}
+                {{ if .problem }}
+                  <h3 class="mt-2 text-2xl font-semibold"><span class="font-bold text-red-600">Problem:</span> {{ .problem }}</h3>
+                {{ else }}
+                  <h3 class="mt-2 text-2xl font-semibold">{{ .title }}</h3>
+                {{ end }}
+              </div>
+              <div class="content relative m-2 rounded bg-white p-6 shadow dark:bg-slate-900 dark:shadow-gray-800">
+                {{ if .solution }}
+                  <p class="text-2xl text-slate-500"><span class="font-bold text-green-600">Solution:</span> {{ .solution }}</p>
+                {{ else }}
+                  <p class="text-2xl text-slate-500">{{ .description }}</p>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

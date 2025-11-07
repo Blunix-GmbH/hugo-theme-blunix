@@ -1,0 +1,46 @@
+<section class="relative overflow-hidden pt-0 pb-0 md:pt-0 md:pb-20" id="{{ .Params.id | default "ethics" }}">
+  <div class="relative container mt-16 md:mt-24">
+    <div class="grid grid-cols-1 pb-8 text-center">
+      <h2 class="mb-6 text-2xl leading-normal font-semibold md:text-3xl md:leading-normal">{{ .Params.title }}</h2>
+    </div>
+    <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-2">
+      <div class="relative order-1 md:order-2">
+        <div class="grid grid-cols-12 items-center gap-4 lg:gap-0">
+          <div class="col-span-6">
+            <div class="grid grid-cols-1 gap-4 lg:gap-6">
+              <img src="{{ .Params.images.left_top.src }}" class="mx-auto rounded-md shadow lg:max-w-[240px]" alt="{{ .Params.images.left_top.alt }}" loading="lazy" />
+              <img src="{{ .Params.images.left_bottom.src }}" class="mx-auto rounded-md shadow lg:max-w-[240px]" alt="{{ .Params.images.left_bottom.alt }}" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-6">
+            <div class="grid grid-cols-1">
+              <img src="{{ .Params.images.right.src }}" class="mx-auto rounded-md shadow lg:max-w-[240px]" alt="{{ .Params.images.right.alt }}" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="absolute start-1/2 bottom-1/2 -z-1 size-[400px] translate-y-1/2 overflow-hidden rounded-full bg-gradient-to-tl from-blue-600 via-blue-600/70 to-blue-600/20 shadow-md shadow-blue-600/10 md:start-0 md:size-[500px] ltr:-translate-x-1/2 ltr:md:translate-x-0 rtl:translate-x-1/2 rtl:md:translate-x-0"></div>
+      </div>
+      <div class="order-2 md:order-1 lg:me-8">
+        <div id="accordion-collapseone" data-accordion="collapse" class="mt-6">
+          {{ range $idx, $item := .Params.items }}
+            <div class="{{ if ne $idx 0 }}mt-4{{ end }} relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+              <h3 class="text-base font-semibold md:text-2xl" id="accordion-collapse-heading-{{ add $idx 1 }}">
+                <button type="button" class="flex w-full items-center justify-between p-5 text-start font-medium" data-accordion-target="#accordion-collapse-body-{{ add $idx 1 }}" aria-expanded="{{ if eq $idx 0 }}true{{ else }}false{{ end }}" aria-controls="accordion-collapse-body-{{ add $idx 1 }}">
+                  <span>{{ $item.question }}</span>
+                  <svg data-accordion-icon class="size-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+              </h3>
+              <div id="accordion-collapse-body-{{ add $idx 1 }}" class="{{ if eq $idx 0 }}block{{ else }}hidden{{ end }}" aria-labelledby="accordion-collapse-heading-{{ add $idx 1 }}">
+                <div class="p-5">
+                  <div class="prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+                    <p class="dark:text-gray-000 text-2xl text-slate-500">{{ $item.answer | markdownify }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

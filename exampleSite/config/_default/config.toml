@@ -1,0 +1,18 @@
+baseURL = 'https://example.org/'
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+languageCode = 'en'
+title = 'Hugo Theme Blunix Demo'
+description = 'Professional business theme for consulting and services'
+theme = "hugo-theme-blunix"
+uglyURLs = true
+disableKinds = ["taxonomy", "term"]
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+noClasses = true

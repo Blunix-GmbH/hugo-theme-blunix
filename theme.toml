@@ -1,0 +1,13 @@
+name        = "hugo-theme-blunix"
+license     = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Professional business theme for Linux consulting and services - extracted from blunix.com"
+homepage    = "https://github.com/blunix/hugo-theme-blunix"
+demosite    = "https://www.blunix.com"
+tags        = ["business", "consulting", "multilingual", "responsive", "clean"]
+features    = ["responsive", "multilingual", "seo", "tailwind"]
+min_version = "0.120.0"
+
+[author]
+  name = "Blunix GmbH"
+  homepage = "https://www.blunix.com"

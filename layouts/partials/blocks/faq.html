@@ -1,0 +1,59 @@
+<section class="relative overflow-hidden pb-16 md:pb-24" id="{{ .Params.id | default "faq" }}">
+  <div class="relative container mt-16 md:mt-16">
+    <div class="grid grid-cols-1 pb-4 text-center">
+      <h2 class="mb-8 text-3xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+      {{ with .Params.subtitle }}
+        <div class="prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline mx-auto max-w-none text-center">
+          <p class="text-2xl text-slate-500" style="max-width: none !important;">{{ . | markdownify }}</p>
+        </div>
+      {{ end }}
+    </div>
+    <div class="relative grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">
+      <div class="md:col-span-6">
+        <div id="accordion-collapseone" data-accordion="collapse">
+          {{ $split := 3 }}
+          {{ range $index, $item := first $split .Params.items }}
+            <div class="{{ if ne $index 0 }}mt-4 {{ end }}relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+              <h2 class="text-base font-semibold md:text-2xl" id="accordion-collapse-heading-{{ $index }}">
+                <button type="button" class="flex w-full items-center justify-between p-5 text-start font-medium" data-accordion-target="#accordion-collapse-body-{{ $index }}" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-controls="accordion-collapse-body-{{ $index }}">
+                  <span>{{ $item.q }}</span>
+                  <svg data-accordion-icon class="size-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+              </h2>
+              <div id="accordion-collapse-body-{{ $index }}" class="{{ if eq $index 0 }}block{{ else }}hidden{{ end }}" aria-labelledby="accordion-collapse-heading-{{ $index }}">
+                <div class="p-5">
+                  <div class="prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+                    <p class="text-2xl text-slate-500 dark:text-gray-400">{{ $item.a | markdownify }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="md:col-span-6">
+        <div id="accordion-collapseone" data-accordion="collapse">
+          {{ $split := 3 }}
+          {{ range $index, $item := after $split .Params.items }}
+            {{ $globalIndex := add $split $index }}
+            <div class="{{ if ne $index 0 }}mt-4 {{ end }}relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+              <h2 class="text-base font-semibold md:text-2xl" id="accordion-collapse-heading-{{ $globalIndex }}">
+                <button type="button" class="flex w-full items-center justify-between p-5 text-start font-medium" data-accordion-target="#accordion-collapse-body-{{ $globalIndex }}" aria-expanded="false" aria-controls="accordion-collapse-body-{{ $globalIndex }}">
+                  <span>{{ $item.q }}</span>
+                  <svg data-accordion-icon class="size-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+              </h2>
+              <div id="accordion-collapse-body-{{ $globalIndex }}" class="hidden" aria-labelledby="accordion-collapse-heading-{{ $globalIndex }}">
+                <div class="p-5">
+                  <div class="prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+                    <p class="text-2xl text-slate-500 dark:text-gray-400">{{ $item.a | markdownify }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

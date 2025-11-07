@@ -1,0 +1,22 @@
+<section class="relative overflow-hidden" id="{{ .Params.id | default "technologies" }}">
+  <div class="relative container mt-16 md:mt-16">
+    <div class="grid grid-cols-1 pb-4 text-center">
+      <h2 class="mb-8 text-3xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+    </div>
+    <div class="grid grid-cols-1 content-start md:grid-cols-4">
+      {{ range .Params.columns }}
+        <div class="lg:ms-8">
+          <h2 class="text-1xl mb-4 leading-normal font-semibold md:text-3xl md:leading-normal">{{ .heading }}</h2>
+          <ul class="mt-4 list-none text-slate-500">
+            {{ range .items }}
+              <li class="text-1xl mb-1 flex text-slate-500">
+                <i class="uil uil-check-circle text-1xl me-2 text-green-600"></i>
+                <a href="{{ .link }}" title="{{ .title }}" class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline">{{ .text }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

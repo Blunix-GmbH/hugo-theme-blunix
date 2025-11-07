@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth overflow-x-hidden" dir="ltr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="linux, debian, ubuntu, consulting, hosting, training, classes, courses">
+        <meta name="author" content="Blunix GmbH">
+        <meta name="website" content="https://www.blunix.com">
+        <meta name="email" content="info@blunix.com">
+        <meta name="version" content="2.0.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+        <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/gif" href="/images/favicon/favicon.gif">
+        <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-57x57.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-72x72.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-114x114.ico">
+
+
+        <link rel="alternate" hreflang="x-default" href="https://www.blunix.com/404.html" />
+        <link rel="alternate" hreflang="de" href="https://www.blunix.com/de/404.html" />
+        <title>Blunix GmbH Berlin 404 Page - This Page Was Not Found</title>
+        <meta name="description" content="The page you requested could not be found. If this is a case of theft, please contact the police. In Germany, pretending to commit a crime is a crime (§ 145d StGB).">
+
+        <!-- Css -->
+        <link rel="stylesheet" href="/assets/css/tailwind.min.css">
+        <link href="/assets/libs/@iconscout/unicons/css/line.min.css" type="text/css" rel="stylesheet">
+
+    </head>
+
+    <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900 overflow-x-hidden">
+<!-- trace:dist/404.html -->
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+
+
+        <!-- Start Navbar -->
+        <nav id="topnav" class="defaultscroll is-sticky">
+            <div class="container relative">
+                <!-- Logo container-->
+                <a class="logo" href="/">
+                    <span class="inline-block dark:hidden">
+                        <img src="/images/navbar/blunix-logo-dark.svg" class="l-dark h-[54px] w-auto" fetchpriority="high"
+                            alt="Blunix Logo Dark">
+                        <img src="/images/navbar/blunix-logo-light.svg" class="l-light h-[54px] w-auto" fetchpriority="high"
+                            alt="Blunix Logo Light">
+                    </span>
+                    <img src="/images/navbar/blunix-logo-light.svg" class="hidden dark:inline-block h-[54px] w-auto" fetchpriority="high"
+                        alt="Blunix Logo Light">
+                </a>
+
+                <!-- End Logo container-->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </div>
+                </div>
+
+                <div id="navigation" class="transition-transform duration-300 ease-in-out">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu nav-light justify-end">
+                        <li><a href="/" class="sub-menu-item">Home</a></li>
+
+                        <li class="has-submenu services-has-submenu parent-parent-menu-item">
+                            <a href="#" onclick="return false;">Services</a><span class="menu-arrow"></span>
+
+                            <ul class="submenu services-submenu">
+                                <li>
+                                    <ul>
+                                        <li><a href="/linux-emergency-support.html" class="sub-menu-item text-base"><i class="uil uil-fire"></i> Linux Emergency Support</a></li>
+                                        <li><a href="/linux-support.html" class="sub-menu-item text-base"><i class="uil uil-fire"></i> Linux Support</a></li>
+                                        <li><a href="/linux-consulting.html" class="sub-menu-item text-base"><i class="uil uil-server"></i> Linux Consulting for Projects&nbsp;&nbsp;&nbsp;</a></li>
+                                        <li><a href="/linux-managed-hosting.html" class="sub-menu-item text-base"><i class="uil uil-cloud-data-connection"></i> Linux Managed Hosting</a></li>
+                                        <li><a href="/qubes-os-consulting-and-support.html" class="sub-menu-item text-base"><i class="uil uil-window-grid"></i> Qubes OS Consulting</a></li>
+                                        <li><a href="/linux-personal-trainings-and-workshops.html" class="sub-menu-item text-base"><i class="uil uil-graduation-cap"></i> Trainings & Workshops</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/ideology.html" class="sub-menu-item">Ideology</a></li>
+                        <li><a href="/blog/" class="sub-menu-item">Blog</a></li>
+                        <li><a href="/manual/" target="_blank" class="sub-menu-item">Manual</a></li>
+                        <li><a href="https://git.blunix.com/welcome/index.html" target="_blank" class="sub-menu-item">Code</a>
+                        </li>
+                        <li><a href="/jobs.html" class="sub-menu-item">Jobs</a></li>
+                        <li><a href="/#contact" class="sub-menu-item">Contact</a></li>
+                        <li class="has-submenu parent-parent-menu-item">
+                            <a href="#" onclick="return false;" aria-label="language switcher">
+                                <i class="uil uil-globe" style="font-size: 1.3rem;"></i>
+                            </a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li>
+                                    <ul id="languageMenu">
+                                        <li><a href="/" class="sub-menu-item text-base flex gap-2 items-center" data-lang="en">
+                                                <img src="../assets/images/navbar/flags/english.webp" alt="usa flag"
+                                                    class="w-5">
+                                                <span>English</span></a></li>
+                                        <li><a href="/de/" class="sub-menu-item text-base flex gap-2 items-center"
+                                                data-lang="de">
+                                                <img src="../assets/images/navbar/flags/germany.webp" alt="german flag"
+                                                    class="w-5">
+                                                <span>German</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li class="flex items-center">
+                            <div class="relative inline-block sub-menu-item">
+                                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                                    <i class="uil uil-moon text-[20px] text-yellow-500"></i>
+                                    <i class="uil uil-sun text-[20px] text-yellow-500"></i>
+                                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
+                                </label>
+                            </div>
+                        </li>
+        -->
+
+                    </ul><!--end navigation menu-->
+                </div><!--end navigation-->
+            </div><!--end container-->
+        </nav><!--end header-->
+        <!-- End Navbar -->
+
+
+        <!-- Start Hero -->
+        <section class="relative table w-full py-36 bg-[url('/assets/images/404/background.webp')] bg-center bg-no-repeat bg-cover" id="start">
+            <div class="absolute inset-0 bg-black opacity-75"></div>
+            <div class="container relative">
+                <div class="grid grid-cols-1 pb-8 text-center mt-10">
+                    <h3 class="md:text-4xl text-4xl md:leading-normal tracking-wide leading-normal font-medium text-white">The page you requested could not be found</h3>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
+                <ul class="tracking-[0.5px] mb-0 inline-block">
+                   <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="/">Home</a></li>
+                   <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
+                   <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">404</li>
+                </ul>
+            </div>
+        </section><!--end section-->
+        <div class="relative">
+            <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
+                <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- End Hero -->
+
+        <!-- Start Section-->
+        <section class="relative mt-36 mb-36 z-10">
+            <div class="container relative">
+                <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1">
+
+                    <div class="text-center">
+                        <div class="content">
+                            <h2 class="title h5 text-4xl font-medium">Hey, where is my <s>bicycle</s> webpage...</h2>
+                            <p class="text-slate-500 text-3xl mt-8">If you are missing a webpage, please contact the police</p>
+                        </div>
+                        <div class="content mt-8">
+                        <a href="/" title="Home" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">To the Start Page</a>
+                        <a href="https://www.internetwache-polizei-berlin.de/index_121.html" target="_blank" rel="noopener noreferrer" title="www.internetwache-polizei-berlin.de" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">Contact Berlin police about a stole bicycle</a>
+                        </div>
+                    </div>
+
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section>
+
+
+
+        <!-- Footer Start -->
+        <footer class="footer bg-dark-footer relative">
+            <div class="container relative">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="py-[60px] px-0">
+                            <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+                                <div class="lg:col-span-3 md:col-span-12">
+                                    <h2 class="tracking-[1px] text-white font-semibold">Copyright Notice</h2>
+                                    <p class="mt-6 text-white">Copyright &copy; 2025 Blunix GmbH.<br>All rights reserved.</p>
+        <!--
+                                    <a href="#" class="text-[22px] focus:outline-none">
+                                        <img src="/src/assets/images/logo-light.png" alt="">
+                                    </a>
+        -->
+                                </div>
+
+                                <div class="lg:col-span-3 md:col-span-4">
+                                    <h2 class="tracking-[1px] text-white font-semibold">Website</h2>
+                                    <ul class="list-none footer-list mt-6">
+                                        <li><a href="/" title="Home" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Home</a></li>
+                                        <li class="mt-[10px]"><a href="/linux-support.html" title="Linux Support" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Linux Support</a></li>
+                                        <li class="mt-[10px]"><a href="/linux-consulting.html" title="Linux Consulting for Projects" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Linux Consulting</a></li>
+                                        <li class="mt-[10px]"><a href="/linux-managed-hosting.html" title="Linux Managed Hosting" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Managed Hosting</a></li>
+                                        <li class="mt-[10px]"><a href="/qubes-os-consulting-and-support.html" title="Qubes OS Consulting and Support" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Qubes OS Consulting and Support</a></li>
+                                        <li class="mt-[10px]"><a href="/linux-personal-trainings-and-workshops.html" title="Personal Linux Trainings and Workshops" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Training</a></li>
+                                        <li class="mt-[10px]"><a href="/ideology.html" title="Business Ideology" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Ideology</a></li>
+                                        <li class="mt-[10px]"><a href="/jobs.html" title="Jobs at Blunix GmbH" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Jobs</a></li>
+                                        <li class="mt-[10px]"><a href="/#contact" title="Contact" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Contact</a></li>
+                                        <li class="mt-[10px]"><a href="/legal-and-privacy.html" title="Legal and Privacy Information" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Legal & Privacy</a></li>
+                                    </ul>
+                                </div><!--end col-->
+
+                                <div class="lg:col-span-3 md:col-span-4">
+                                    <h2 class="tracking-[1px] text-white font-semibold">Hosting</h2>
+                                    <ul class="list-none footer-list mt-6">
+                                        <li><a href="/manual/" title="Hosting Manual" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Documentation</a></li>
+                                        <li class="mt-[10px]"><a href="https://git.blunix.com/welcome/index.html" title="Blunix Gitlab" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Code</a></li>
+                                        <li class="mt-[10px]"><a href="/blog/" title="Blunix Blog" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Blog</a></li>
+                                    </ul>
+                                </div><!--end col-->
+
+                                <div class="lg:col-span-3 md:col-span-4">
+                                    <h2 class="tracking-[1px] text-white font-semibold">Social Media</h2>
+                                    <ul class="list-none mt-6">
+
+                                        <li class="inline"><a href="https://www.linkedin.com/company/blunix-gmbh" title="$linkedin.com: Linux Support" target="_blank" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/linkedin-logo.webp" alt="Linkedin Logo" class="rounded-[16px]"></a></li>
+
+                                        <li class="inline"><a href="https://dev.to/blunixgmbh" target="_blank" title="dev.to: Linux Support" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/devto-logo.webp" alt="devto Logo" class="rounded-[16px]"></a></li>
+
+                                        <li class="inline"><a href="https://mastodon.social/@blunixgmbh" target="_blank" title="mastodon.social: Blunix GmbH Mastodon Page" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/mastodon-logo.webp" alt="Mastodon Logo" class="rounded-[16px]"></a></li>
+
+                                    </ul><!--end icon-->
+
+                                    <br><br>
+                                    <h2 class="tracking-[1px] text-white font-semibold">Listed with official Debian Consultants</h2>
+                                    <p class="mt-6 text-white">Blunix GmbH is listed with <a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="https://www.debian.org/consultants/index.de.html#DE" rel="noopener noreferrer" href="https://www.debian.org/consultants/#DE" rel="noopener noreferrer" target="_blank" title="debian.org: List of Debian consultants">debian.org/consultants</a> and <a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="https://www.openbsd.org/support.html#Germany" rel="noopener noreferrer" href="https://www.openbsd.org/support.html#Germany" rel="noopener noreferrer" target="_blank" title="openbsd.org: List of OpenBSD consultants">openbsd.org/support.html</a></p>
+
+                                </div><!--end col-->
+                            </div><!--end grid-->
+                        </div><!--end col-->
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+        </footer><!--end footer-->
+        <!-- Footer End -->
+
+
+        <!-- JAVASCRIPTS -->
+        <script defer src="/assets/js/plugins.init.js"></script>
+        <script defer src="/assets/js/app.js"></script>
+
+        <script src="/assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="/assets/libs/feather-icons/feather.min.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>

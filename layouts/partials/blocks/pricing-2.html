@@ -1,0 +1,88 @@
+<section class="relative md:pt-24 md:pb-36 pt-16 pb-24 bg-blue-600" id="{{ .Params.id | default "pricing" }}">
+  <div class="container relative">
+    <div class="grid grid-cols-1 pb-8 text-center">
+      <h2 class="mb-4 md:text-3xl md:leading-normal text-4xl leading-normal font-semibold text-white">{{ .Params.title }}</h2>
+      <p class="text-slate-500 max-w-xl mx-auto text-2xl text-white/70">{{ .Params.subtitle }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800">
+    <div class="container relative">
+        <div class="grid grid-cols-1">
+            <div class="relative z-2 duration-500 sm:-mt-[200px] -mt-[140px] m-0">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+
+                    {{ range .Params.cards }}
+                    <div class="group relative rounded-md overflow-hidden hover:shadow dark:shadow-gray-800 hover:shadow-blue-600 border-[3px] border-blue-600 bg-white dark:bg-slate-900 text-center duration-500">
+                        <div class="p-6 py-8 border-b border-gray-100 dark:border-gray-700">
+                            <h3 class="text-lg font-semibold uppercase">{{ .heading | safeHTML }}</h3>
+                            <p class="text-slate-500 mt-4 text-2xl">{{ .description }}</p>
+                        </div>
+
+                        <div class="p-6 hosting-price">
+                            {{ if .tabs }}
+                            <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="{{ .tabs_id }}" {{ if .tabs_toggle }}data-tabs-toggle="#{{ .tabs_toggle }}"{{ end }} role="tablist">
+                                {{ range $index, $tab := .tabs }}
+                                <li role="presentation" class="inline-block">
+                                    <button class="px-4 py-1 text-sm font-semibold rounded-full w-full {{ if eq $index 0 }}hover:text-blue-600{{ else }}text-slate-500{{ end }} duration-500" id="{{ .id }}" data-tabs-target="#{{ .target }}" type="button" role="tab" aria-controls="{{ .target }}" aria-selected="{{ if eq $index 0 }}true{{ else }}false{{ end }}">{{ .label | safeHTML }}</button>
+                                </li>
+                                {{ end }}
+                            </ul>
+                            {{ end }}
+
+                            {{ if .input }}
+                            <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="{{ .tabs_id }}" {{ if .tabs_toggle }}data-tabs-toggle="#{{ .tabs_toggle }}"{{ end }} role="tablist">
+                                <li role="tab" aria-controls="{{ .input.aria_controls }}" aria-selected="true" tabindex="0" class="text-transparent bg-transparent">
+                                    <input type="number" id="{{ .input.id }}" class="rounded p-2 mr-4 text-black" placeholder="{{ .input.placeholder }}">
+                                </li>
+                            </ul>
+                            {{ end }}
+
+                            <div id="{{ .tabs_toggle }}" class="mt-6">
+                                {{ range $index, $price := .prices }}
+                                <div class="{{ if ne $index 0 }}hidden {{ end }}" id="{{ .id }}" role="tabpanel" aria-labelledby="{{ .aria_label }}">
+                                    <div class="flex justify-center">
+                                        {{ if .currency }}<span class="text-sm text-slate-500 font-semibold">{{ .currency }}</span>{{ end }}
+                                        <span class="text-3xl font-semibold mx-1" {{ if .result_id }}id="{{ .result_id }}"{{ end }}>{{ .amount }}</span>
+                                        {{ if .unit }}<span class="text-sm text-slate-500 font-semibold self-end">{{ .unit }}</span>{{ end }}
+                                    </div>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        {{ if .script }}
+                        <script>
+                            document.getElementById('{{ .script.input_id }}').addEventListener('input', function() {
+                                const number = this.value;
+                                const result = number ? number * {{ .script.multiplier }} : 0;
+                                document.getElementById('{{ .script.result_id }}').textContent = `${result}`;
+                            });
+                        </script>
+                        {{ end }}
+
+                        {{ if .gray_box }}
+                        <div class="py-3 px-2 bg-gray-50 dark:bg-slate-800">
+                            <p class="text-slate-500 mb-0 text-2xl">{{ .gray_box }}</p>
+                        </div>
+                        {{ end }}
+
+                        <div class="p-6 border-b border-gray-100 dark:border-gray-700 text-start">
+                            <ul class="list-none">
+                                {{ range .features }}
+                                <li class="text-slate-500 my-1 text-2xl"><i class="uil uil-check me-2 {{ .icon_color | default "text-emerald-600" }}"></i>{{ .text | safeHTML }}</li>
+                                {{ end }}
+                            </ul>
+                            {{ if .additional_text }}
+                            <p class="text-slate-500 mt-4 text-2xl">{{ .additional_text }}</p>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

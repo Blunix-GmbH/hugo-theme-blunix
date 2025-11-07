@@ -1,0 +1,57 @@
+<section class="relative" id="{{ .Params.id | default "pricing" }}">
+  <div class="relative container">
+    <div class="grid grid-cols-1 pb-8 text-center">
+      <h2 class="mb-4 text-4xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+      <p class="mx-auto max-w-2xl text-2xl text-slate-500">{{ .Params.subtitle }}</p>
+    </div>
+    <div class="grid grid-cols-1">
+      <ul class="mx-auto inline-block w-fit flex-wrap justify-center rounded-full bg-white p-2 text-center shadow dark:bg-slate-900 dark:shadow-gray-800" id="myTab" data-tabs-toggle="#StarterContent" role="tablist">
+        <li role="presentation" class="inline-block">
+          <button class="w-full rounded-full px-4 py-1 text-sm font-semibold duration-500 hover:text-indigo-600" id="start-month-tab" data-tabs-target="#start-month" type="button" role="tab" aria-controls="start-month" aria-selected="true">By the Hour</button>
+        </li>
+        <li role="presentation" class="inline-block">
+          <button class="w-full rounded-full px-4 py-1 text-sm font-semibold duration-500" id="start-year-tab" data-tabs-target="#start-year" type="button" role="tab" aria-controls="start-year" aria-selected="false">Monthly</button>
+        </li>
+      </ul>
+      <div id="StarterContent" class="mt-6 mx-auto">
+        <div class="" id="start-month" role="tabpanel" aria-labelledby="start-month-tab">
+          <div class="mt-8 grid gap-[30px] md:grid-cols-2 lg:grid-cols-4 place-items-center md:place-items-stretch">
+            {{ range .Params.hourly }}
+              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow duration-500 hover:scale-105 hover:border-blue-600 hover:bg-white dark:border-gray-700 dark:bg-slate-800 dark:shadow-gray-800 dark:hover:border-blue-600 dark:hover:bg-slate-900">
+                <h6 class="mb-5 font-bold text-blue-600 uppercase">{{ .title }}</h6>
+                <div class="mb-5 flex">
+                  {{ if .price }}{{ if ne .price "Free" }}<span class="text-xl font-semibold">€</span>{{ end }}{{ end }}
+                  <span class="price mb-0 text-4xl font-semibold">{{ .price }}</span>
+                  {{ with .unit }}<span class="mb-1 self-end text-xl font-semibold">{{ . }}</span>{{ end }}
+                </div>
+                {{- $btnClasses := partial "helpers/button-classes.html" (dict "color" .color "hover_color" .hover_color "intensity" .intensity "hoverIntensity" .hoverIntensity) -}}
+                {{- $textColor := .text_color | default "text-white" -}}
+                <a href="{{ .url }}" title="Contact" class="{{ $btnClasses }} {{ $textColor }} hover:text-white mt-5 inline-block rounded-md border px-5 py-2 text-center align-middle text-base font-semibold tracking-wide duration-500">{{ .cta }}</a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+        <div class="hidden" id="start-year" role="tabpanel" aria-labelledby="start-year-tab">
+          <div class="mt-8 grid gap-[30px] md:grid-cols-2 lg:grid-cols-4 place-items-center md:place-items-stretch">
+            {{ range .Params.monthly }}
+              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow duration-500 hover:scale-105 hover:border-blue-600 hover:bg-white dark:border-gray-700 dark:bg-slate-800 dark:shadow-gray-800 dark:hover:border-blue-600 dark:hover:bg-slate-900">
+                <h6 class="mb-5 font-bold text-blue-600 uppercase">{{ .title }}</h6>
+                <div class="mb-5 flex">
+                  {{ if .price }}{{ if ne .price "Free" }}<span class="text-xl font-semibold">€</span>{{ end }}{{ end }}
+                  <span class="price mb-0 text-4xl font-semibold">{{ .price }}</span>
+                  {{ with .unit }}<span class="mb-1 self-end text-xl font-semibold">{{ . }}</span>{{ end }}
+                </div>
+                <ul class="mb-0 list-none">
+                  {{ range .features }}<li class="py-1 text-slate-500">{{ . }}</li>{{ end }}
+                </ul>
+                {{- $btnClasses := partial "helpers/button-classes.html" (dict "color" .color "hover_color" .hover_color "intensity" .intensity "hoverIntensity" .hoverIntensity) -}}
+                {{- $textColor := .text_color | default "text-white" -}}
+                <a href="{{ .url }}" title="Contact" class="{{ $btnClasses }} {{ $textColor }} hover:text-white mt-5 inline-block rounded-md border px-5 py-2 text-center align-middle text-base font-semibold tracking-wide duration-500">{{ .cta }}</a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "process" }}">
+  <div class="container relative md:mt-16 mt-16">
+    <div class="grid grid-cols-1 pb-4 text-center">
+      <h2 class="mb-8 md:text-4xl md:leading-normal text-3xl leading-normal font-semibold">{{ .Params.title }}</h2>
+      {{ with .Params.subtitle }}<p class="text-slate-500 text-2xl max-w-4xl mx-auto">{{ . }}</p>{{ end }}
+    </div>
+    <div class="grid grid-cols-1 mt-8">
+      <div class="relative after:content-[''] after:absolute after:top-0 md:after:end-0 md:after:start-0 after:w-px after:h-full md:after:m-auto after:border-s-2 after:border-dashed after:border-gray-200 dark:after:border-gray-700 ms-3 md:ms-0">
+        {{ range .Params.steps }}
+        <div class="{{ if eq . (index $.Params.steps 0) }}ms-8 md:ms-0{{ else }}mt-12 ms-8 md:ms-0{{ end }} relative after:content-[''] after:absolute after:top-[9px] after:rounded-full after:z-10 after:w-2.5 after:h-2.5 after:bg-blue-600 md:after:mx-auto md:after:end-0 md:after:start-0 after:-start-9 before:content-[''] before:absolute md:before:mx-auto md:before:end-0 md:before:start-0 before:-start-11 before:rounded-full before:z-10 before:border-2 before:border-dashed before:border-gray-200 dark:before:border-gray-700 before:top-0 before:w-7 before:h-7 before:bg-white dark:before:bg-slate-900">
+          <div class="grid md:grid-cols-2">
+            <div class="{{ if .right }}text-start md:ms-8 relative text-blue-600 text-5xl md:order-2{{ else }}md:text-end md:me-8 relative text-blue-600 text-5xl{{ end }}">
+              <i class="{{ .icon }}"></i>
+              <h3 class="my-2 font-semibold text-4xl text-slate-500">{{ .heading }}</h3>
+            </div>
+            <div class="{{ if .right }}ltr:float-left rtl:float-right md:text-end md:me-8 mt-6 md:mt-0 md:order-1{{ else }}ltr:float-left rtl:float-right text-start md:ms-8 mt-6 md:mt-0{{ end }}">
+              <p class="mt-3 mb-0 text-slate-500 text-2xl">{{ .text | markdownify }}</p>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+

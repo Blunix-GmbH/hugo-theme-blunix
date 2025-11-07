@@ -1,0 +1,45 @@
+{{ $src := .src }}
+{{ $alt := .alt | default .heading }}
+{{ $class := .class | default "" }}
+{{ $sizes := .sizes | default "100vw" }}
+{{ $widths := .widths | default (slice 320 640 1024 1280 1440 1920 2560) }}
+{{ $loading := .loading | default "lazy" }}
+
+{{ $isSvg := strings.HasSuffix $src ".svg" }}
+{{ $isRemote := strings.HasPrefix $src "http://" }}
+{{ $isRemote = or $isRemote (strings.HasPrefix $src "https://") }}
+{{ $isWebP := strings.HasSuffix $src ".webp" }}
+
+{{ if $isRemote }}
+  <img src="{{ $src }}" alt="{{ $alt }}" class="{{ $class }}" loading="{{ $loading }}" />
+{{ else if $isSvg }}
+  {{ with resources.GetMatch $src }}<img src="{{ .RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}" loading="{{ $loading }}" />{{ end }}
+{{ else }}
+  {{ with resources.GetMatch $src }}
+    {{ $imageResource := . }}
+    {{ $optimizedImages := slice }}
+    {{ $fallbackImage := $imageResource }}
+
+    {{ range $widths }}
+      {{ if gt $imageResource.Width . }}
+        {{/* Resize the image accordingly and ensure it is appended properly */}}
+        {{ if $isWebP }}
+          {{ $resizedImage := $imageResource.Resize (printf "%dx" .) }}
+          {{ $optimizedImages = $optimizedImages | append (slice $resizedImage) }}
+        {{ else }}
+          {{ $resizedImage := $imageResource.Resize (printf "%dx webp q90" .) }}
+          {{ $optimizedImages = $optimizedImages | append (slice $resizedImage) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+
+    <picture>
+      {{ range $i, $srcset := $optimizedImages }}
+        {{ $mediaQuery := cond (eq $i (sub (len $widths) 1)) (print "(min-width: " (index $widths $i) "px)") (print "(max-width: " (sub (int (index $widths (add $i 1))) 1) "px)") }}
+        <source srcset="{{ $srcset.RelPermalink }} {{ $srcset.Width }}w" media="{{ $mediaQuery }}" sizes="{{ $sizes }}" type="image/{{ if $isWebP }}webp{{ else }}webp{{ end }}" />
+      {{ end }}
+      <img src="{{ $fallbackImage.RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}" width="{{ $fallbackImage.Width }}" height="{{ $fallbackImage.Height }}" loading="{{ $loading }}" />
+    </picture>
+  {{ end }}
+{{ end }}

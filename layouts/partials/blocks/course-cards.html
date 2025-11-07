@@ -1,0 +1,36 @@
+<section class="relative overflow-hidden py-16 md:py-24" id="courses">
+  <div class="relative container">
+    <div class="grid grid-cols-1 gap-[30px] md:grid-cols-2 lg:grid-cols-3">
+      {{ range .Params.cards }}
+        <div class="group relative flex h-full flex-col overflow-hidden rounded-md shadow duration-500 ease-in-out hover:shadow-lg dark:shadow-gray-800">
+          <div class="flex-grow">
+            <div class="relative overflow-hidden">
+              {{ with .image }}
+                <img src="{{ .src }}" class="duration-500 ease-in-out group-hover:scale-110" alt="{{ .alt }}" />
+              {{ end }}
+              <div class="absolute inset-0 bg-slate-900/50 opacity-0 duration-500 ease-in-out group-hover:opacity-100"></div>
+            </div>
+            <div class="content p-6">
+              <h3 class="text-2xl leading-normal font-semibold md:text-3xl md:leading-normal">{{ .title }}</h3>
+              <p class="mx-auto mt-4 max-w-xl text-2xl text-slate-500">{{ .description }}</p>
+            </div>
+          </div>
+          <ul class="flex list-none items-center border-t border-gray-100 px-6 pt-4 pb-6 text-slate-500 dark:border-gray-800">
+            <li class="me-4 flex items-center">
+              <i class="uil uil-calendar-alt me-2 text-lg leading-none text-slate-900 dark:text-white"></i>
+              <span>{{ .duration }}</span>
+            </li>
+            <li class="me-4 flex items-center">
+              <i class="uil uil-clock me-2 text-lg leading-none text-slate-900 dark:text-white"></i>
+              <span>{{ .perDay }}</span>
+            </li>
+            <li class="flex items-center">
+              <i class="uil uil-invoice me-2 text-lg leading-none text-slate-900 dark:text-white"></i>
+              <span>{{ .price }}</span>
+            </li>
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <div>
+    {{ partial "blocks/blocks" . }}
+  </div>
+  {{ if .Content }}
+    <div class="dark:bg-primary-950">
+      <div class="mx-auto max-w-4xl px-6 py-16 lg:px-8">
+        <div class="prose prose-lg prose-headings:text-secondary prose-a:text-secondary max-w-none text-white">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

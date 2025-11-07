@@ -1,0 +1,8 @@
+[en]
+languageName = "English"
+languageCode = "en-us"
+contentDir = "content/en"
+title = "Hugo Theme Blunix Demo"
+weight = 1
+
+[en.params]

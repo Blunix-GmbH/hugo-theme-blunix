@@ -1,0 +1,67 @@
+{{ define "main" }}
+<!-- Start Hero -->
+<section class="relative table w-full py-36">
+    <img src="/images/blog/background.webp" srcset="/images/blog/background-sm.webp 600w, /images/blog/background.webp 1000w" fetchpriority="high" alt="background" class="absolute inset-0 w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <div class="container relative">
+        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+            <h1 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">{{ .Title }}</h1>
+            {{ if .Description }}
+            <p class="text-center text-2xl text-white">{{ .Description }}</p>
+            {{ end }}
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
+        <ul class="tracking-[0.5px] mb-0 inline-block">
+            <a href="../index.html" title="main page"><li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">Home</li></a>
+            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
+            <a href="index.html" title="blog overview"><li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">Blog</li></a>
+            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
+            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">{{ .Title }}</li>
+        </ul>
+    </div>
+</section><!--end section-->
+<div class="relative">
+    <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-500">
+        <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!-- End Hero -->
+
+<!-- Start Section-->
+<section class="relative md:py-24 py-16 template-sec">
+    <div class="container relative">
+        <div class="grid grid-cols-1 gap-4 md:gap-5 lg:gap-[30px]">
+
+{{ .Content }}
+
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+
+  <section class="relative py-16 md:py-24" id="questions-contact">
+    <div class="relative container">
+      <div class="grid grid-cols-1 text-center">
+        <h2 class="mb-2 text-4xl font-bold">Questions? Requests? Suggestions?</h2>
+        <div class="my-6">
+          <a href="/index.html#contact" title="Contact" class="mt-2 mb-2 inline-block rounded-md border border-blue-600 bg-blue-600 px-5 py-2 text-center align-middle text-xl font-semibold tracking-wide text-white duration-500 hover:border-green-700 hover:bg-green-700 md:px-6 md:py-3 md:text-3xl"><i class="uil uil-phone"></i> Contact us Today!</a>
+        </div>
+        <h3 class="mb-4 text-2xl leading-normal font-semibold md:text-3xl md:leading-normal">We are looking forward to hearing from you!</h3>
+        <p class="mx-auto max-w-xl text-2xl text-slate-500">
+          Are you looking for<br />
+          <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="/linux-emergency-support.html" title="Linux Emergency Support">Linux Emergency Support</a>,<br />
+          <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="/linux-consulting.html" title="Project based Linux Consulting">Linux Consulting for Projects</a>,<br />
+          <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="/linux-managed-hosting.html" title="Linux Managed Hosting">Linux Managed Hosting</a>,<br />
+          <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="/qubes-os-consulting-and-support.html" title="Qubes OS Consulting and Support">Qubes OS Consulting and Support</a> or<br />
+          <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="/linux-personal-trainings-and-workshops.html" title="Linux Trainings und Workshops">Linux Trainings and Workshops</a>?
+        </p>
+      </div>
+      <!--end grid-->
+    </div>
+    <!--end container-->
+  </section>
+  <!--end section-->
+{{ end }}

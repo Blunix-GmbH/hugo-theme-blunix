@@ -1,0 +1,205 @@
+/* Service section link styling matching blunix-old */
+.service-section-content a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+.service-section-content a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Features grid link styling matching blunix-old */
+#features a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+#features a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Video demo section link styling */
+#cake a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+#cake a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Process timeline section link styling */
+#how-it-works a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+#how-it-works a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Hero notice box styling */
+.hero-notice {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.75rem; /* 12px */
+  border-radius: 0.5rem; /* 8px */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem 2rem; /* py-6 px-8 */
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-notice i {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  font-size: 1.25rem; /* text-xl */
+  color: #fbbf24; /* text-yellow-400 */
+}
+
+.hero-notice p {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625; /* leading-relaxed */
+  color: #ffffff;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-notice p {
+    font-size: 1rem; /* lg:text-base */
+  }
+}
+
+/* Contact notice box styling */
+.contact-notice {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.75rem; /* 12px */
+  border-radius: 0.5rem; /* 8px */
+  background-color: #eff6ff; /* bg-blue-50 */
+  border: 1px solid #bfdbfe; /* border-blue-200 */
+  padding: 1rem 1.5rem; /* py-4 px-6 */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 48rem; /* max-w-3xl */
+}
+
+.contact-notice i {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  font-size: 1.25rem; /* text-xl */
+  color: #3b82f6; /* text-blue-500 */
+}
+
+.contact-notice p {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625; /* leading-relaxed */
+  color: #1e293b; /* text-slate-800 */
+  margin: 0;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .contact-notice {
+    padding: 1.25rem 2rem; /* md:py-5 md:px-8 */
+  }
+
+  .contact-notice p {
+    font-size: 1rem; /* md:text-base */
+  }
+
+  .contact-notice i {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+/* LOPSA intro section link styling */
+.lopsa-intro {
+  max-width: 72rem; /* max-w-6xl - matches the width in original */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lopsa-intro a {
+  color: #2563eb !important; /* text-blue-600 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+.lopsa-intro a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Text-image-bg block styling (with decorative background) */
+.prose p {
+  margin-bottom: 1rem; /* mb-4 */
+  max-width: 36rem; /* max-w-xl */
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  color: #64748b; /* text-slate-500 */
+}
+
+.prose h3 {
+  margin-bottom: 1rem; /* mb-4 */
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem; /* leading-normal */
+  font-weight: 600; /* font-semibold */
+}
+
+@media (min-width: 768px) {
+  .prose h3 {
+    font-size: 1.875rem; /* md:text-3xl */
+    line-height: 2.25rem; /* md:leading-normal */
+  }
+}
+
+.prose a {
+  color: #3b82f6; /* text-blue-500 */
+  font-weight: 600; /* font-semibold */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.prose a:hover {
+  color: #1d4ed8; /* text-blue-700 */
+  text-decoration: none;
+}
+
+/* Text-image block styling (service sections with gray bg) */
+.service-section-content p {
+  max-width: 36rem; /* max-w-xl */
+  font-size: 1.5rem; /* text-2xl */
+  color: #64748b; /* text-slate-500 */
+}
+
+.service-section-content h3 {
+  margin-top: 1.5rem; /* mt-6 */
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem; /* leading-normal */
+  font-weight: 600; /* font-semibold */
+}
+
+@media (min-width: 768px) {
+  .service-section-content h3 {
+    font-size: 1.875rem; /* md:text-3xl */
+    line-height: 2.25rem; /* md:leading-normal */
+  }
+}

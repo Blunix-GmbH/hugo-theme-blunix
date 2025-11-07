@@ -1,0 +1,31 @@
+<section class="relative z-10 overflow-hidden pb-16 md:pb-24" id="emergency">
+  <div class="relative container mt-16 gap-[30px] md:mt-24">
+      <div class="grid grid-cols-1 items-center md:grid-cols-2" style="gap: 60px !important;">
+        <style>
+          @media (min-width: 1024px) {
+            #emergency .grid {
+              gap: 120px !important;
+            }
+          }
+        </style>
+      <div class="{{ if eq .Params.image_position "right" }}order-1 md:order-2{{ else }}order-2 md:order-1{{ end }} relative z-0">
+        <img src="{{ .Params.image.src }}" class="rounded-lg shadow-md dark:shadow-gray-800 relative z-10" alt="{{ .Params.image.alt }}" />
+        <div class="{{ if eq .Params.image_bg "green" }}bg-green-600/80 dark:bg-green-600/80{{ else }}bg-blue-600/80 dark:bg-blue-600/80{{ end }} absolute top-1/2 left-1/2 z-0 hidden size-[320px] -translate-x-1/2 -translate-y-1/2 rotate-45 overflow-hidden rounded-3xl md:block lg:size-[500px]"></div>
+      </div>
+      <div class="{{ if eq .Params.image_position "right" }}lg:me-8 order-2 md:order-1{{ else }}lg:ms-8 order-1 md:order-2{{ end }} relative z-10">
+        <h2 class="mb-4 text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+        <div class="prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+          {{ range .Params.paragraphs }}<p class="mb-4 max-w-xl text-2xl text-slate-500">{{ . | markdownify }}</p>{{ end }}
+        </div>
+        {{ with .Params.phone }}
+          <a href="tel:{{ . | replaceRE " " "" | replaceRE "/" "" }}" title="Call Emergency Support" class="mb-4 inline-block rounded-md border border-red-600 bg-red-600 px-5 py-2 text-center align-middle text-4xl font-semibold tracking-wide text-white duration-500 hover:border-green-700 hover:bg-green-700">{{ . }}</a>
+        {{ end }}
+        {{ with .Params.features }}
+          <ul class="list-none text-slate-500">
+            {{ range . }}<li class="mb-1 flex text-2xl text-slate-500"><i class="uil uil-check-circle me-2 text-3xl text-green-600"></i> {{ . }}</li>{{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="relative flex h-[90vh] flex-col justify-center py-36 md:py-80" id="start">
+  <img src="{{ .Params.background | default "/images/index/background.webp" }}" srcset="/images/index/background-sm.webp 600w, /images/index/background-md.webp 1200w, /images/index/background.webp 1400w" alt="background" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-center" />
+  <div class="absolute inset-0 bg-slate-900/50"></div>
+  <div class="relative container">
+    <div class="mt-10 grid grid-cols-1 items-center">
+      <h1 class="mb-5 text-4xl leading-normal font-bold text-white lg:text-7xl lg:leading-normal">{{ .Params.title }}</h1>
+      <p class="max-w-xl text-lg text-white lg:text-3xl"><b>{{ .Params.subtitle | markdownify }}</b></p>
+      {{ with .Params.cta }}
+        <div class="mt-8">
+          <a href="{{ .url | safeURL }}" title="{{ .title }}" class="inline-block rounded-md border border-red-600 bg-red-600 px-5 py-2 text-center align-middle text-base font-semibold tracking-wide text-white duration-500 hover:border-blue-700 hover:bg-blue-700">{{ .label }}</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

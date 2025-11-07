@@ -1,0 +1,24 @@
+<section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "principles" }}">
+  <div class="grid grid-cols-1 pb-4 text-center">
+    <h2 class="md:text-4xl md:leading-normal text-3xl leading-normal font-semibold">{{ .Params.title }}</h2>
+  </div>
+  {{ range .Params.items }}
+  <div class="container relative mt-6">
+    <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-8">
+      {{ if .image_left }}
+      <div class="md:col-span-3 order-1 md:order-1"><img src="{{ .image.src }}" alt="{{ .image.alt }}" class="rounded-lg shadow-md dark:shadow-gray-800"></div>
+      <div class="md:col-span-9 order-2 md:order-2">
+        <h3 class="mb-4 text-2xl md:text-4xl font-semibold">{{ .title | safeHTML }}</h3>
+        <p class="text-xl text-slate-500">{{ .text | markdownify }}</p>
+      </div>
+      {{ else }}
+      <div class="md:col-span-9 order-2 md:order-1">
+        <h3 class="mb-4 text-2xl md:text-4xl font-semibold">{{ .title | safeHTML }}</h3>
+        <p class="text-xl text-slate-500">{{ .text | markdownify }}</p>
+      </div>
+      <div class="md:col-span-3 order-1 md:order-2"><img src="{{ .image.src }}" alt="{{ .image.alt }}" class="rounded-lg shadow-md dark:shadow-gray-800"></div>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</section>

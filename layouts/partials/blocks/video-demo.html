@@ -1,0 +1,27 @@
+<section class="relative md:py-24 py-16" id="{{ .Params.id | default "video-demo" }}">
+    <div class="container relative">
+        <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+
+            <div class="lg:col-span-7 md:col-span-6">
+                <div class="lg:ms-5">
+                    {{ with .Params.label }}<p class="text-blue-600 text-xl font-bold mb-2">{{ . }}</p>{{ end }}
+                    <h2 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">{{ .Params.title }}</h2>
+
+                    {{ range .Params.paragraphs }}<p class="text-2xl text-slate-500 max-w-xl{{ if ne . (index $.Params.paragraphs 0) }} mt-2{{ end }}">{{ . | markdownify }}</p>{{ end }}
+                </div>
+            </div>
+            <div class="lg:col-span-5 md:col-span-6">
+                <div class="relative">
+                    <img src="{{ .Params.image.src }}" class="rounded-full" alt="{{ .Params.image.alt }}">
+                    <div class="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
+                        <a href="#{{ .Params.id }}" onclick="lightbox_open();" data-type="youtube" data-id="placeholder" title="{{ .Params.videoTitle | default "Play video" }}"
+                            class="lightbox size-20 rounded-full shadow-lg dark:shadow-gray-800 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-indigo-600 dark:text-white">
+                            <i class="uil uil-play inline-flex items-center justify-center text-4xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

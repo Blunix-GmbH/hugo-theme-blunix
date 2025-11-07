@@ -1,0 +1,35 @@
+{{- $text := .text -}}
+{{- $url := .url -}}
+{{- $style := .style | default "blue" -}}
+{{- $hover := .hover | default "green" -}}
+{{- $size := .size | default "standard" -}}
+
+{{- $styleClasses := "" -}}
+{{- $hoverClasses := "" -}}
+{{- $sizeClasses := "" -}}
+
+{{- if eq $style "blue" -}}
+  {{- $styleClasses = "bg-blue-600 border-blue-600 text-white" -}}
+{{- else if eq $style "green" -}}
+  {{- $styleClasses = "bg-green-600 border-green-600 text-white" -}}
+{{- else if eq $style "red" -}}
+  {{- $styleClasses = "bg-red-600 border-red-600 text-white" -}}
+{{- end -}}
+
+{{- if eq $hover "blue" -}}
+  {{- $hoverClasses = "hover:bg-blue-700 hover:border-blue-700" -}}
+{{- else if eq $hover "green" -}}
+  {{- $hoverClasses = "hover:bg-green-700 hover:border-green-700" -}}
+{{- else if eq $hover "red" -}}
+  {{- $hoverClasses = "hover:bg-red-700 hover:border-red-700" -}}
+{{- end -}}
+
+{{- if eq $size "large" -}}
+  {{- $sizeClasses = "py-2 px-5 md:py-3 md:px-6 text-xl md:text-3xl" -}}
+{{- else if eq $size "xlarge" -}}
+  {{- $sizeClasses = "py-2 px-5 md:py-3 md:px-6 text-2xl md:text-4xl" -}}
+{{- else -}}
+  {{- $sizeClasses = "py-2 px-5 text-base" -}}
+{{- end -}}
+
+<a href="{{ $url }}" class="inline-block font-semibold tracking-wide border align-middle duration-500 text-center {{ $styleClasses }} {{ $hoverClasses }} {{ $sizeClasses }} rounded-md mt-2">{{ $text }}</a>

@@ -1,0 +1,12 @@
+{{- $images := slice }}
+
+{{- if .Params.image }}
+  {{- $imageURL := .Params.image | absURL }}
+  {{- $images = $images | append $imageURL }}
+{{- else if site.Params.featured_image }}
+  {{- $imageURL := site.Params.featured_image | absURL }}
+  {{- $images = $images | append $imageURL }}
+{{- end }}
+
+{{- return $images }}
+

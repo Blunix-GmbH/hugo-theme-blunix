@@ -1,0 +1,57 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="linux, debian, ubuntu, consulting, hosting, training, classes, courses" />
+  <meta name="author" content="Blunix GmbH" />
+  <meta name="website" content="https://www.blunix.com" />
+  <meta name="email" content="info@blunix.com" />
+  <meta name="version" content="2.0.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  {{/* Canonical Link */}}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  
+  {{- if .IsTranslated -}}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+    {{- range .Translations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+    {{- end }}
+  {{- else }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{- end }}
+  {{- $xDefaultPage := . -}}
+  {{- if ne .Language.Lang "en" -}}
+    {{- with (first 1 (where .Translations "Language.Lang" "en")) -}}
+      {{- $xDefaultPage = index . 0 -}}
+    {{- end -}}
+  {{- end -}}
+  <link rel="alternate" hreflang="x-default" href="{{ $xDefaultPage.Permalink }}" />
+  <title>{{ if .Title }}{{ .Title }}{{ else }}Blunix GmbH Berlin: Linux Support, Consulting and Hosting{{ end }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings{{ end }}" />
+  {{ if .Params.backgroundImage }}
+  <link rel="preload" href="{{ .Params.backgroundImage }}" as="image" />
+  {{ else if eq .Layout "error" }}
+  <link rel="preload" href="/images/error/background.webp" as="image" />
+  {{ else if eq .Kind "404" }}
+  <link rel="preload" href="/images/404/background.webp" as="image" />
+  {{ else if .IsHome }}
+  <link rel="preload" href="/images/index/background.webp" as="image" />
+  {{ end }}
+  <meta name="ahrefs-site-verification" content="78dd0d8faf7e19c7b5efbb9ee930d1c300a66b0007b3c58d961f2d3b63d70e4d" />
+  {{ partialCached "css.html" . }}
+  <link rel="stylesheet" href="/css/blog-styles.min.css" />
+  <link rel="stylesheet" href="/css/prism.min.css" />
+
+
+  {{ partial "opengraph.html" . }}
+  {{ partial "twitter_cards.html" . }}
+
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+  <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/gif" href="/images/favicon/favicon.gif" />
+  <link rel="icon" type="image/png" href="/images/favicon/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-57x57.ico" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-72x72.ico" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-114x114.ico" />
+</head>

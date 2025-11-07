@@ -1,0 +1,46 @@
+<section class="relative overflow-hidden" id="{{ .Params.id | default "lopsa" }}">
+  <div class="grid grid-cols-1 pb-4 text-center">
+    <h2 class="mb-8 md:text-4xl md:leading-normal text-3xl leading-normal font-semibold">{{ .Params.title }}</h2>
+    {{ range .Params.intro }}
+      <div class="lopsa-intro">
+        <p class="mb-4 text-xl text-slate-500">{{ . | markdownify }}</p>
+      </div>
+    {{ end }}
+  </div>
+
+  {{ $items := .Params.items }}
+  {{ $len := len $items }}
+  {{ range $index := seq 0 (sub (div (add $len 1) 2) 1) }}
+    {{ $leftIndex := mul $index 2 }}
+    {{ $rightIndex := add $leftIndex 1 }}
+    {{ $leftItem := index $items $leftIndex }}
+    {{ $rightItem := index $items $rightIndex }}
+    
+    <div class="container relative {{ if eq $index 0 }}md:mt-24 mt-16{{ else }}md:mt-24 mt-8{{ end }} gap-8">
+      <div class="grid md:grid-cols-12 grid-cols-1 items-start gap-8">
+        <div class="md:col-span-6 order-1 md:order-1">
+          <h3 class="mb-4 text-2xl md:text-4xl font-semibold">{{ $leftItem.title }}</h3>
+          <p class="text-xl text-slate-500">
+            <ul class="list-disc pl-4">
+              {{ range $leftItem.bullets }}
+                <li><p class="text-xl text-slate-500">{{ . }}</p></li>
+              {{ end }}
+            </ul>
+          </p>
+        </div>
+        {{ if $rightItem }}
+        <div class="md:col-span-6 order-2 md:order-2">
+          <h3 class="mb-4 text-2xl md:text-4xl font-semibold">{{ $rightItem.title }}</h3>
+          <p class="text-xl text-slate-500">
+            <ul class="list-disc pl-4">
+              {{ range $rightItem.bullets }}
+                <li><p class="text-xl text-slate-500">{{ . }}</p></li>
+              {{ end }}
+            </ul>
+          </p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</section>

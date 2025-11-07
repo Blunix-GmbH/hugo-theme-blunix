@@ -1,0 +1,77 @@
+<nav id="topnav" class="defaultscroll is-sticky">
+    <div class="container relative">
+        <a class="logo" href="{{ "/" | relLangURL }}">
+            <span class="inline-block dark:hidden">
+                <img src="/images/navbar/blunix-logo-dark.svg" class="l-dark h-[54px] w-auto" fetchpriority="high" alt="Blunix Logo Dark">
+                <img src="/images/navbar/blunix-logo-light.svg" class="l-light h-[54px] w-auto" fetchpriority="high" alt="Blunix Logo Light">
+            </span>
+            <img src="/images/navbar/blunix-logo-light.svg" class="hidden dark:inline-block h-[54px] w-auto" fetchpriority="high" alt="Blunix Logo Light">
+        </a>
+        <div class="menu-extras">
+            <div class="menu-item">
+                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                    <div class="lines"><span></span><span></span><span></span></div>
+                </a>
+            </div>
+        </div>
+        <div id="navigation" class="transition-transform duration-300 ease-in-out">
+            <ul class="navigation-menu nav-light justify-end">
+                {{ range .Site.Menus.main }}
+                  {{ if eq .Identifier "services" }}
+                    <li class="has-submenu services-has-submenu parent-parent-menu-item">
+                      <a href="#" onclick="return false;">{{ .Name }}</a><span class="menu-arrow"></span>
+                      <ul class="submenu services-submenu"><li><ul>
+                        {{ range $.Site.Menus.services }}
+                          <li><a href="{{ .URL | safeURL }}" class="sub-menu-item text-base"><i class="{{ .Params.icon }}"></i> {{ .Name }}{{ if .Params.extraSpacing }}&nbsp;&nbsp;&nbsp;{{ end }}</a></li>
+                        {{ end }}
+                      </ul></li></ul>
+                    </li>
+                  {{ else }}
+                    <li><a href="{{ .URL | safeURL }}" class="sub-menu-item">{{ .Name }}</a></li>
+                  {{ end }}
+                {{ end }}
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="#" onclick="return false;" aria-label="language switcher">
+                        <i class="uil uil-globe" style="font-size: 1.3rem;"></i>
+                    </a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li>
+                            <ul id="languageMenu">
+                                {{ $page := $.Page }}
+                                {{ $allTranslations := $page.AllTranslations }}
+                                {{ if not $allTranslations }}
+                                  {{ $allTranslations = slice $page }}
+                                {{ end }}
+                                {{ $homeTranslations := $.Site.Home.AllTranslations }}
+                                {{ $flagMap := dict "en" "english" "de" "germany" }}
+                                {{ range $.Site.Languages }}
+                                  {{ $langCode := .Lang }}
+                                  {{ $langLabel := .LanguageName }}
+                                  {{ $langFlag := index $flagMap $langCode }}
+                                  {{ $candidate := first 1 (where $allTranslations "Language.Lang" $langCode) }}
+                                  {{ if not $candidate }}
+                                    {{ $candidate = first 1 (where $homeTranslations "Language.Lang" $langCode) }}
+                                  {{ end }}
+                                  {{ if gt (len $candidate) 0 }}
+                                    {{ $translation := index $candidate 0 }}
+                                    {{ $isActive := eq $langCode $.Site.Language.Lang }}
+                                <li>
+                                  <a href="{{ $translation.Permalink }}" class="sub-menu-item text-base flex gap-2 items-center font-medium" data-lang="{{ $langCode }}" {{ if $isActive }}aria-current="true"{{ end }}>
+                                    {{ if $langFlag }}
+                                      <img src="/images/navbar/flags/{{ $langFlag }}.webp" alt="{{ $langLabel }} flag" class="w-5 h-5 object-cover rounded-sm">
+                                    {{ else }}
+                                      <span class="inline-flex w-5 h-5 items-center justify-center rounded-sm bg-slate-200 text-[0.65rem] font-semibold uppercase text-slate-700">{{ $langCode }}</span>
+                                    {{ end }}
+                                    <span>{{ $langLabel }}</span>
+                                  </a>
+                                </li>
+                                  {{ end }}
+                                {{ end }}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

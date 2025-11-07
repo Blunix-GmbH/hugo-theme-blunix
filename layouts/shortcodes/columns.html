@@ -1,0 +1,7 @@
+<div class="flex flex-wrap flex-col md:gap-8 md:flex-row -ml-4 -mr-4 [&>div]:flex-1 [&>div]:my-4 [&>div]:mx-0 [&>div]:min-w-[100px] [&>div]:max-w-full [&>div]:py-0 [&>div]:px-4">
+  {{ range split .Inner "<--->" }}
+  {{ printf "<div class=\"mt-0 mb-0\">" | htmlUnescape | safeHTML }}
+  {{ . | safeHTML }}
+  {{ printf "</div>" | htmlUnescape | safeHTML }}
+  {{ end }}
+</div>

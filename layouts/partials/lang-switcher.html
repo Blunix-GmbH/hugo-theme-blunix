@@ -1,0 +1,73 @@
+{{ $currentLang := .Site.Language.Lang }}
+<div class="flex items-center space-x-4">
+  <!-- Slovenian -->
+  {{ if eq $currentLang "si" }}
+    <span class="block text-white" title="Slovenian">
+      <img class="h-[22px] border border-gray-100 shadow-sm" src="/images/si.svg" alt="Slovenian" />
+    </span>
+  {{ else }}
+    {{ $siURL := "" }}
+    {{ range .AllTranslations }}
+      {{ if eq .Lang "si" }}
+        {{ $siURL = .RelPermalink }}
+      {{ end }}
+    {{ end }}
+    {{ if ne $siURL "" }}
+      <a class="block text-white shadow-sm hover:opacity-80" title="Slovenian" href="{{ $siURL }}">
+        <img class="h-[22px] border border-gray-100" src="/images/si.svg" alt="Slovenian" />
+      </a>
+    {{ else }}
+      <span class="block text-white opacity-40" title="Slovenian (unavailable)">
+        <img class="h-[22px] border border-gray-100" src="/images/si.svg" alt="Slovenian" />
+      </span>
+    {{ end }}
+  {{ end }}
+
+
+  <!-- English -->
+  {{ if eq $currentLang "en" }}
+    <span class="block text-white" title="English">
+      <img class="h-[22px] border border-gray-100 shadow-sm" src="/images/en.svg" alt="English" />
+    </span>
+  {{ else }}
+    {{ $enURL := "" }}
+    {{ range .AllTranslations }}
+      {{ if eq .Lang "en" }}
+        {{ $enURL = .RelPermalink }}
+      {{ end }}
+    {{ end }}
+    {{ if ne $enURL "" }}
+      <a class="block text-white shadow-sm hover:opacity-80" title="English" href="{{ $enURL }}">
+        <img class="h-[22px] border border-gray-100" src="/images/en.svg" alt="English" />
+      </a>
+    {{ else }}
+      <span class="block text-white opacity-40" title="English (unavailable)">
+        <img class="h-[22px] border border-gray-100" src="/images/en.svg" alt="English" />
+      </span>
+    {{ end }}
+  {{ end }}
+
+
+  <!-- German -->
+  {{ if eq $currentLang "de" }}
+    <span class="block text-white" title="German">
+      <img class="h-[22px] border border-gray-100 shadow-sm" src="/images/de.svg" alt="German" />
+    </span>
+  {{ else }}
+    {{ $deURL := "" }}
+    {{ range .AllTranslations }}
+      {{ if eq .Lang "de" }}
+        {{ $deURL = .RelPermalink }}
+      {{ end }}
+    {{ end }}
+    {{ if ne $deURL "" }}
+      <a class="block text-white shadow-sm hover:opacity-80" title="German" href="{{ $deURL }}">
+        <img class="h-[22px] border border-gray-100" src="/images/de.svg" alt="German" />
+      </a>
+    {{ else }}
+      <span class="block text-white opacity-40" title="German (unavailable)">
+        <img class="h-[22px] border border-gray-100" src="/images/de.svg" alt="German" />
+      </span>
+    {{ end }}
+  {{ end }}
+</div>

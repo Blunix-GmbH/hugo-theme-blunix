@@ -1,0 +1,9 @@
+{{ with .buttons }}
+  <div class="mt-6">
+    {{ range . }}
+      {{- $btnClasses := partial "helpers/button-classes.html" (dict "color" .color "hover_color" .hover_color "intensity" .intensity "hover_intensity" .hover_intensity) -}}
+      <a href="{{ .url | safeURL }}" title="{{ .title | default .label }}" class="{{ $btnClasses }} mt-2 inline-block rounded-md border px-5 py-2 text-center align-middle text-base font-semibold tracking-wide text-white duration-500">{{ .label }}</a>
+    {{ end }}
+  </div>
+{{ end }}
+

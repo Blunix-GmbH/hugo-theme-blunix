@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --breakpoint-2xl: 85rem;
+  --breakpoint-3xl: 90rem;
+  --color-primary: #07495b;
+  --color-primary-dark: #053948;
+  --color-secondary: #325a75;
+  --color-secondary-dark: #445c70;
+  --color-lightgray: #f9f9f9;
+  --font-sans:
+    "Mulish", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+  --text-18: 1.125rem;
+  --text-18--line-height: 1.25;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/mulish-v13-latin_latin-ext-300.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/mulish-v13-latin_latin-ext-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/mulish-v13-latin_latin-ext-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/mulish-v13-latin_latin-ext-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/mulish-v13-latin_latin-ext-700.woff2") format("woff2");
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    "Mulish",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Mulish",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+strong {
+  color: inherit !important;
+  font-weight: 700 !important;
+}
+
+/* Service section link styling matching blunix-old */
+.service-section-content a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+.service-section-content a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Features grid link styling matching blunix-old */
+#features a {
+  color: #3b82f6 !important; /* text-blue-500 */
+  font-weight: 600 !important; /* font-semibold */
+  text-decoration: underline !important;
+  transition: color 0.3s ease !important;
+}
+
+#features a:hover {
+  color: #1d4ed8 !important; /* text-blue-700 */
+  text-decoration: none !important; /* hover:no-underline */
+}
+
+/* Ensure the services submenu expands to fit the longest item */
+#topnav .services-submenu,
+#topnav .services-submenu > li > ul {
+  min-width: max-content;
+  width: max-content;
+}
+
+/* Language switcher typography */
+#topnav #languageMenu a {
+  font-weight: 500 !important;
+}
+
+#topnav #languageMenu a[aria-current="true"] {
+  font-weight: 700 !important;
+}

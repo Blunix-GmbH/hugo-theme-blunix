@@ -1,0 +1,36 @@
+{{- $color := .color | default "blue" -}}
+{{- $hoverColor := .hover_color | default "indigo" -}}
+
+{{- /* Smart intensity defaults based on color combinations */ -}}
+{{- $intensity := "" -}}
+{{- $hoverIntensity := "" -}}
+
+{{- if eq $color "red" -}}
+  {{- $intensity = "600" -}}
+  {{- if eq $hoverColor "green" -}}{{- $hoverIntensity = "700" -}}{{- end -}}
+{{- else if eq $color "green" -}}
+  {{- $intensity = "700" -}}
+  {{- if eq $hoverColor "indigo" -}}{{- $hoverIntensity = "700" -}}
+  {{- else if eq $hoverColor "blue" -}}{{- $hoverIntensity = "600" -}}{{- end -}}
+{{- else if eq $color "blue" -}}
+  {{- $intensity = "600" -}}
+  {{- if eq $hoverColor "green" -}}{{- $hoverIntensity = "700" -}}
+  {{- else if eq $hoverColor "indigo" -}}{{- $hoverIntensity = "700" -}}{{- end -}}
+{{- else if eq $color "yellow" -}}
+  {{- $intensity = "300" -}}
+  {{- if eq $hoverColor "green" -}}{{- $hoverIntensity = "700" -}}{{- end -}}
+{{- else -}}
+  {{- /* Fallback defaults */ -}}
+  {{- $intensity = "600" -}}
+  {{- $hoverIntensity = "700" -}}
+{{- end -}}
+
+{{- /* Allow manual override if specified */ -}}
+{{- $intensity = .intensity | default $intensity -}}
+{{- $hoverIntensity = .hoverIntensity | default $hoverIntensity -}}
+
+{{- printf "bg-%s-%s hover:bg-%s-%s border-%s-%s hover:border-%s-%s"
+    $color $intensity
+    $hoverColor $hoverIntensity
+    $color $intensity
+    $hoverColor $hoverIntensity -}}
