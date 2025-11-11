@@ -5,38 +5,50 @@
                 <div class="py-[60px] px-0">
                     <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
                         <div class="lg:col-span-3 md:col-span-12">
-                            <h2 class="tracking-[1px] text-white font-semibold">Copyright Notice</h2>
-                            <p class="mt-6 text-white">Copyright &copy; {{ dateFormat "2006" now }} Blunix GmbH.<br>All rights reserved.</p>
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ .Site.Params.footer_copyright_notice }}</h2>
+                            <p class="mt-6 text-white">Copyright &copy; {{ dateFormat "2006" now }} Blunix GmbH.<br>{{ .Site.Params.footer_all_rights_reserved }}</p>
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            <h2 class="tracking-[1px] text-white font-semibold">Website</h2>
+                            {{ $websiteMenu := index (where .Site.Menus.footer "Identifier" "website") 0 }}
+                            {{ if $websiteMenu }}
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ $websiteMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
-                                {{ range .Site.Menus.footer }}
-                                  <li class="mt-[10px]"><a href="{{ .URL }}" title="{{ .Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> {{ .Name }}</a></li>
+                                {{ range $index, $item := $websiteMenu.Children }}
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> {{ $item.Name }}</a></li>
                                 {{ end }}
                             </ul>
+                            {{ end }}
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            <h2 class="tracking-[1px] text-white font-semibold">Hosting</h2>
+                            {{ $hostingMenu := index (where .Site.Menus.footer "Identifier" "hosting") 0 }}
+                            {{ if $hostingMenu }}
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ $hostingMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
-                                <li><a href="https://www.blunix.com/manual/" title="Hosting Manual" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Documentation</a></li>
-                                <li class="mt-[10px]"><a href="https://git.blunix.com/welcome/index.html" title="Blunix Gitlab" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Code</a></li>
-                                <li class="mt-[10px]"><a href="/blog/index.html" title="Blunix Blog" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> Blog</a></li>
+                                {{ range $index, $item := $hostingMenu.Children }}
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> {{ $item.Name }}</a></li>
+                                {{ end }}
                             </ul>
+                            {{ end }}
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            <h2 class="tracking-[1px] text-white font-semibold">Social Media</h2>
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ .Site.Params.footer_social_media }}</h2>
                             <ul class="list-none mt-6">
-                                <li class="inline"><a href="https://www.linkedin.com/company/blunix-gmbh" title="$linkedin.com: Linux Support" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/linkedin-logo.webp" alt="Linkedin Logo" class="rounded-[16px]"></a></li>
-                                <li class="inline"><a href="https://dev.to/blunixgmbh" title="dev.to: Linux Support" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/devto-logo.webp" alt="devto Logo" class="rounded-[16px]"></a></li>
-                                <li class="inline"><a href="https://mastodon.social/@blunixgmbh" title="mastodon.social: Blunix GmbH Mastodon Page" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="/images/footer/mastodon-logo.webp" alt="Mastodon Logo" class="rounded-[16px]"></a></li>
+                                {{ range .Site.Params.social_media }}
+                                  <li class="inline"><a href="{{ .url }}" title="{{ .title }}" target="_blank" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 rounded-md"><img src="{{ .icon }}" alt="{{ .alt }}" class="rounded-[16px]"></a></li>
+                                {{ end }}
                             </ul>
                             <br><br>
-                            <h2 class="tracking-[1px] text-white font-semibold">Listed with official Debian Consultants</h2>
-                            <p class="mt-6 text-white">Blunix GmbH is listed with <a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="https://www.debian.org/consultants/index.de.html#DE" title="debian.org: List of Debian consultants">debian.org/consultants</a> and <a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="https://www.openbsd.org/support.html#Germany" title="openbsd.org: List of OpenBSD consultants">openbsd.org/support.html</a></p>
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ .Site.Params.footer_listed_with }}</h2>
+                            <p class="mt-6 text-white">
+                              {{ if .Site.Params.footer_listed_with_text_middle }}
+                                {{ .Site.Params.footer_listed_with_text }}{{ range $index, $link := .Site.Params.debian_links }}{{ if eq $index 0 }}<a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ else }}{{ $.Site.Params.footer_listed_with_text_middle }}<a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ $.Site.Params.footer_listed_with_text_end }}{{ end }}{{ end }}
+                              {{ else }}
+                                {{ .Site.Params.footer_listed_with_text }} {{ range $index, $link := .Site.Params.debian_links }}{{ if $index }} and {{ end }}<a class="hover:text-sky-400 font-semibold underline hover:no-underline" style="color:#F48FB1;" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ end }}
+                              {{ end }}
+                            </p>
                         </div>
                     </div>
                 </div>
