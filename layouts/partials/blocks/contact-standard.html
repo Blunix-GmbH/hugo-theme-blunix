@@ -22,7 +22,7 @@
         <div class="content mt-7">
           <h3 class="title text-xl font-medium">{{ .heading }}</h3>
           <div class="mt-5"><a href="{{ .contact_url | safeURL }}" title="{{ .contact_title }}" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline">{{ .contact }}</a></div>
-          <p class="text-slate-000 mt-3">
+          <p class="font-bold uppercase mt-3">
             {{ if .description_link }}
               <a href="{{ .description_link.url | safeURL }}" title="{{ .description_link.title }}" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline">{{ .description_link.text }}</a>
             {{ else if .description_text }}
