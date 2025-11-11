@@ -2,7 +2,7 @@
   <div class="scroller bg-blue" data-direction="left" data-speed="fast">
     <div class="scroller__inner">
       {{ range .Params.partners }}
-      <a href="{{ .url }}">
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
         <img src="{{ .img }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" alt="{{ .alt }}" />
       </a>
       {{ end }}
