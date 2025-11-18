@@ -38,25 +38,40 @@
                         <li>
                             <ul id="languageMenu">
                                 {{ $page := $.Page }}
-                                {{ $allTranslations := $page.AllTranslations }}
-                                {{ if not $allTranslations }}
-                                  {{ $allTranslations = slice $page }}
-                                {{ end }}
-                                {{ $homeTranslations := $.Site.Home.AllTranslations }}
                                 {{ $flagMap := dict "en" "english" "de" "germany" }}
                                 {{ range $.Site.Languages }}
                                   {{ $langCode := .Lang }}
                                   {{ $langLabel := .LanguageName }}
                                   {{ $langFlag := index $flagMap $langCode }}
-                                  {{ $candidate := first 1 (where $allTranslations "Language.Lang" $langCode) }}
-                                  {{ if not $candidate }}
-                                    {{ $candidate = first 1 (where $homeTranslations "Language.Lang" $langCode) }}
+                                  {{ $targetURL := "" }}
+                                  {{ $isActive := eq $langCode $.Site.Language.Lang }}
+                                  
+                                  {{/* Find translation URL for this language */}}
+                                  {{ if $isActive }}
+                                    {{ $targetURL = $page.RelPermalink }}
+                                  {{ else }}
+                                    {{/* Iterate through AllTranslations to find the one matching this language */}}
+                                    {{ range $page.AllTranslations }}
+                                      {{ if eq .Language.Lang $langCode }}
+                                        {{ $targetURL = .RelPermalink }}
+                                      {{ end }}
+                                    {{ end }}
+                                    {{/* If no translation found, try home page translations */}}
+                                    {{ if not $targetURL }}
+                                      {{ range $.Site.Home.AllTranslations }}
+                                        {{ if eq .Language.Lang $langCode }}
+                                          {{ $targetURL = .RelPermalink }}
+                                        {{ end }}
+                                      {{ end }}
+                                      {{/* Final fallback to home page */}}
+                                      {{ if not $targetURL }}
+                                        {{ $targetURL = $.Site.Home.RelPermalink }}
+                                      {{ end }}
+                                    {{ end }}
                                   {{ end }}
-                                  {{ if gt (len $candidate) 0 }}
-                                    {{ $translation := index $candidate 0 }}
-                                    {{ $isActive := eq $langCode $.Site.Language.Lang }}
+                                  
                                 <li>
-                                  <a href="{{ $translation.Permalink }}" class="sub-menu-item text-base flex gap-2 items-center font-medium" data-lang="{{ $langCode }}" {{ if $isActive }}aria-current="true"{{ end }}>
+                                  <a href="{{ $targetURL }}" class="sub-menu-item text-base flex gap-2 items-center font-medium" data-lang="{{ $langCode }}" {{ if $isActive }}aria-current="true"{{ end }}>
                                     {{ if $langFlag }}
                                       <img src="/images/navbar/flags/{{ $langFlag }}.webp" alt="{{ $langLabel }} flag" class="w-5 h-5 object-cover rounded-sm">
                                     {{ else }}
@@ -65,7 +80,6 @@
                                     <span>{{ $langLabel }}</span>
                                   </a>
                                 </li>
-                                  {{ end }}
                                 {{ end }}
                             </ul>
                         </li>

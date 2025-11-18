@@ -9,7 +9,7 @@
   </div>
   <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
     <ul class="tracking-[0.5px] mb-0 inline-block">
-      <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">Home</a></li>
+      <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ "/" | relLangURL }}">{{ i18n "Home" }}</a></li>
       <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
       <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">{{ .Params.breadcrumb | default .Params.title }}</li>
     </ul>

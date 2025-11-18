@@ -11,14 +11,14 @@
               <div class="mt-5 text-center">
                 {{ with .image }}<img src="{{ .src }}" class="mx-auto size-14 rounded-full shadow-md" alt="{{ .alt }}" />{{ end }}
                 {{ if .problem }}
-                  <h3 class="mt-2 text-2xl font-semibold"><span class="font-bold text-red-600">Problem:</span> {{ .problem }}</h3>
+                  <h3 class="mt-2 text-2xl font-semibold"><span class="font-bold text-red-600">{{ i18n "Problem" }}</span> {{ .problem }}</h3>
                 {{ else }}
                   <h3 class="mt-2 text-2xl font-semibold">{{ .title }}</h3>
                 {{ end }}
               </div>
               <div class="content relative m-2 rounded bg-white p-6 shadow dark:bg-slate-900 dark:shadow-gray-800">
                 {{ if .solution }}
-                  <p class="text-2xl text-slate-500"><span class="font-bold text-green-600">Solution:</span> {{ .solution }}</p>
+                  <p class="text-2xl text-slate-500"><span class="font-bold text-green-600">{{ i18n "Solution" }}</span> {{ .solution }}</p>
                 {{ else }}
                   <p class="text-2xl text-slate-500">{{ .description }}</p>
                 {{ end }}

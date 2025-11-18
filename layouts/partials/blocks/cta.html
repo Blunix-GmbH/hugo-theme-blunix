@@ -1,18 +1,17 @@
 <section class="relative md:py-24 py-16" id="questions-contact">
   <div class="container relative">
     <div class="grid grid-cols-1 text-center">
-      <h2 class="text-4xl font-bold mb-2">{{ .Params.title | default "Questions? Requests? Suggestions?" }}</h2>
+      <h2 class="text-4xl font-bold mb-2">{{ i18n "cta_title" }}</h2>
       <div class="my-6">
-        <a href="{{ .Params.url | default "index.html#contact" }}" title="{{ .Params.linkTitle | default "Contact" }}" class="py-2 px-5 md:py-3 md:px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-xl md:text-3xl text-center bg-blue-600 hover:bg-green-700 border-blue-600 hover:border-green-700 text-white rounded-md mt-2 mb-2"><i class="uil uil-phone"></i> {{ .Params.buttonText | default "Contact us Today!" }}</a>
+        <a href="{{ i18n "cta_contact_url" }}" title="{{ i18n "cta_contact_title" }}" class="py-2 px-5 md:py-3 md:px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-xl md:text-3xl text-center bg-blue-600 hover:bg-green-700 border-blue-600 hover:border-green-700 text-white rounded-md mt-2 mb-2"><i class="uil uil-phone"></i> {{ i18n "cta_button" }}</a>
       </div>
-      <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">{{ .Params.subtitle | default "We are looking forward to hearing from you!" }}</h3>
+      <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">{{ i18n "cta_subtitle" }}</h3>
       <p class="text-slate-500 max-w-xl text-2xl mx-auto">
-        {{ with .Params.text }}{{ . }}{{ end }}
-        {{ with .Params.links }}
-          Are you looking for<br>
-          {{ $linksLen := len . }}
-          {{ range $index, $link := . }}
-            <a class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline" href="{{ $link.url }}" title="{{ $link.title }}">{{ $link.text }}</a>{{ if eq (add $index 1) $linksLen }}?{{ else if eq (add $index 2) $linksLen }} or<br>{{ else }},<br>{{ end }}
+        {{ i18n "cta_looking_for" }}<br>
+        {{ if .Params.links }}
+          {{ $linksLen := len .Params.links }}
+          {{ range $index, $link := .Params.links }}
+            <a class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline" href="{{ $link.url }}" title="{{ $link.title }}">{{ $link.text }}</a>{{ if eq (add $index 1) $linksLen }}?{{ else if eq (add $index 2) $linksLen }} {{ i18n "cta_or" }}<br>{{ else }},<br>{{ end }}
           {{ end }}
         {{ end }}
       </p>

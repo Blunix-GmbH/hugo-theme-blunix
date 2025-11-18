@@ -231,7 +231,7 @@ const routes = [
   },
   {
     en: "/linux-emergency-support.html",
-    de: "/de/linux-emergency-support.html",
+    de: "/de/linux-notfall-support.html",
   },
   {
     en: "/linux-support.html",
@@ -247,19 +247,23 @@ const routes = [
   },
   {
     en: "/linux-personal-trainings-and-workshops.html",
-    de: "/de/linux-personal-trainings-and-workshops.html",
+    de: "/de/linux-schulungen-und-workshops.html",
   },
   {
     en: "/qubes-os-consulting-and-support.html",
-    de: "/de/qubes-os-consulting-and-support.html",
+    de: "/de/qubes-os-beratung-und-support.html",
   },
   {
     en: "/ideology.html",
-    de: "/de/ideology.html",
+    de: "/de/ideologie.html",
   },
   {
     en: "/blog/",
-    de: "/blog/",
+    de: "/de/blog/",
+  },
+  {
+    en: "/manual",
+    de: "/manual",
   },
   {
     en: "/jobs.html",

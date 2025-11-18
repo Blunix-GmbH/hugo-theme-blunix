@@ -1,25 +1,18 @@
 {{ define "main" }}
 <!-- Start Hero -->
+{{ $homeURL := .Site.Home.RelPermalink }}
 <section class="relative table w-full py-36 bg-[url('/images/404/background.webp')] bg-center bg-no-repeat bg-cover" id="start">
     <img src="/images/404/background.webp" srcset="/images/404/background.webp" alt="background" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center">
     <div class="absolute inset-0 bg-black opacity-75"></div>
     <div class="container relative">
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
-            {{ if eq .Site.Language.Lang "de" }}
-            <h3 class="md:text-4xl text-4xl md:leading-normal tracking-wide leading-normal font-medium text-white">Die angeforderte Seite konnte nicht gefunden werden</h3>
-            {{ else }}
-            <h3 class="md:text-4xl text-4xl md:leading-normal tracking-wide leading-normal font-medium text-white">The page you requested could not be found</h3>
-            {{ end }}
+            <h3 class="md:text-4xl text-4xl md:leading-normal tracking-wide leading-normal font-medium text-white">{{ i18n "404HeroHeading" }}</h3>
         </div><!--end grid-->
     </div><!--end container-->
 
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
-           {{ if eq .Site.Language.Lang "de" }}
-           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="/de/">Startseite</a></li>
-           {{ else }}
-           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="/">Home</a></li>
-           {{ end }}
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ $homeURL }}">{{ i18n "404BreadcrumbHome" }}</a></li>
            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">404</li>
         </ul>
@@ -41,22 +34,12 @@
 
             <div class="text-center">
                 <div class="content">
-                    {{ if eq .Site.Language.Lang "de" }}
-                    <h2 class="title h5 text-4xl font-medium">Hey, wo ist denn <s>mein Fahrrad</s> meine Seite...</h2>
-                    <p class="text-slate-500 text-3xl mt-8">Wenn Sie Ihre Seite vermissen, kontaktieren Sie bitte die Polizei</p>
-                    {{ else }}
-                    <h2 class="title h5 text-4xl font-medium">Hey, where is my <s>bicycle</s> webpage...</h2>
-                    <p class="text-slate-500 text-3xl mt-8">If you are missing a webpage, please contact the police</p>
-                    {{ end }}
+                    <h2 class="title h5 text-4xl font-medium">{{ (i18n "404MainHeading") | safeHTML }}</h2>
+                    <p class="text-slate-500 text-3xl mt-8">{{ i18n "404MainParagraph" }}</p>
                 </div>
                 <div class="content mt-8">
-                {{ if eq .Site.Language.Lang "de" }}
-                <a href="/de/" title="Startseite" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">Zur Startseite</a>
-                <a href="https://www.internetwache-polizei-berlin.de/index_121.html" target="_blank" rel="noopener noreferrer" title="www.internetwache-polizei-berlin.de" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">Geklautes Fahrrad bei der Berliner Polizei anzeigen</a>
-                {{ else }}
-                <a href="/" title="Home" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">To the Start Page</a>
-                <a href="https://www.internetwache-polizei-berlin.de/index_121.html" target="_blank" rel="noopener noreferrer" title="www.internetwache-polizei-berlin.de" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">Contact Berlin police about a stole bicycle</a>
-                {{ end }}
+                <a href="{{ $homeURL }}" title="{{ i18n "404HomeButtonTitle" }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">{{ i18n "404HomeButtonLabel" }}</a>
+                <a href="https://www.internetwache-polizei-berlin.de/index_121.html" target="_blank" rel="noopener noreferrer" title="{{ i18n "404PoliceButtonTitle" }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">{{ i18n "404PoliceButtonLabel" }}</a>
                 </div>
             </div>
 

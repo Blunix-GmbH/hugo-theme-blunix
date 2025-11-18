@@ -60,11 +60,11 @@
                 <ul class="pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center list-none text-slate-500 px-6 pb-6">
                     <li class="flex items-center me-4">
                         <i class="uil uil-clock text-lg leading-none me-2 text-slate-500 dark:text-white"></i>
-                        <span>{{ .ReadingTime }} {{ if eq .ReadingTime 1 }}Minute{{ else }}Minutes{{ end }}</span>
+                        <span>{{ .ReadingTime }} {{ if eq .ReadingTime 1 }}{{ i18n "reading_time_minute" }}{{ else }}{{ i18n "reading_time_minutes" }}{{ end }}</span>
                     </li>
                     <li class="flex items-center me-4">
                         <i class="uil uil-calendar-alt text-lg leading-none me-2 text-slate-500 dark:text-white"></i>
-                        <span>{{ .Date.Format "January 2, 2006" }}</span>
+                        <span>{{ .Date | time.Format ":date_long" }}</span>
                     </li>
                 </ul>
             </div>
