@@ -1,0 +1,26 @@
+<section class="relative py-16 md:py-24" id="questions-contact">
+  <div class="relative container">
+    <div class="grid grid-cols-1 text-center">
+      <h2 class="mb-2 text-4xl font-bold">{{ i18n "cta_title" }}</h2>
+      <div class="my-6">
+        <a href="{{ i18n "cta_contact_url" }}" title="{{ i18n "cta_contact_title" }}" class="mt-2 mb-2 inline-block rounded-md border border-blue-600 bg-blue-600 px-5 py-2 text-center align-middle text-xl font-semibold tracking-wide text-white duration-500 hover:border-green-700 hover:bg-green-700 md:px-6 md:py-3 md:text-3xl"><i class="uil uil-phone"></i> {{ i18n "cta_button" }}</a>
+      </div>
+      <h3 class="mb-4 text-2xl leading-normal font-semibold md:text-3xl md:leading-normal">{{ i18n "cta_subtitle" }}</h3>
+      <p class="mx-auto max-w-xl text-2xl text-slate-500">
+        {{ i18n "cta_looking_for" }}<br />
+        {{ $dataKey := printf "blog-cta-links.%s" .Site.Language.Lang }}
+        {{ $data := index .Site.Data $dataKey }}
+        {{ if $data }}
+          {{ $linksLen := len $data.links }}
+          {{ range $index, $link := $data.links }}
+            <a class="font-semibold text-blue-500 underline hover:text-blue-700 hover:no-underline" href="{{ $link.url }}" title="{{ $link.title }}">{{ $link.text }}</a>{{ if eq (add $index 1) $linksLen }}?{{ else if eq (add $index 2) $linksLen }} {{ i18n "cta_or" }}<br />{{ else }},<br />{{ end }}
+          {{ end }}
+        {{ end }}
+      </p>
+    </div>
+    <!--end grid-->
+  </div>
+  <!--end container-->
+</section>
+<!--end section-->
+
