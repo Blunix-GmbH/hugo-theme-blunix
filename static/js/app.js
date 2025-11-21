@@ -144,15 +144,57 @@ function activateMenu() {
     }
   }
 }
+/*********************/
+/*  Smooth Scroll with Fixed Header Offset */
+/*********************/
+function scrollToAnchor(anchor) {
+  const element = document.querySelector(anchor);
+  if (element) {
+    const header = document.getElementById("topnav");
+    const banner = document.querySelector(".bg-primary.sticky");
+    let offset = 0;
+    
+    if (header) {
+      offset += header.offsetHeight;
+    }
+    if (banner) {
+      offset += banner.offsetHeight;
+    }
+    
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+}
+
+// Handle anchor links on page load
 document.addEventListener("DOMContentLoaded", function () {
-  var isChrome =
-    /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  if (window.location.hash && isChrome) {
+  if (window.location.hash) {
     setTimeout(function () {
-      var hash = window.location.hash;
-      window.location.hash = "";
-      window.location.hash = hash;
-    }, 300);
+      scrollToAnchor(window.location.hash);
+    }, 100);
+  }
+});
+
+// Handle anchor link clicks
+document.addEventListener("click", function (e) {
+  const link = e.target.closest("a[href^='#']");
+  if (link && link.getAttribute("href") !== "#" && link.getAttribute("href") !== "javascript:void(0)") {
+    const href = link.getAttribute("href");
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      scrollToAnchor(href);
+      // Update URL without triggering scroll
+      if (history.pushState) {
+        history.pushState(null, null, href);
+      } else {
+        window.location.hash = href;
+      }
+    }
   }
 });
 /*********************/
