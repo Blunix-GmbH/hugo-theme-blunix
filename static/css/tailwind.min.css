@@ -1945,6 +1945,13 @@ video {
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }
+
+.text-white,
+.text-white p {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
 .text-white\/50 {
   color: rgb(255 255 255 / 0.5) !important;
 }
