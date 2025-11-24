@@ -39,9 +39,11 @@
                             <ul id="languageMenu">
                                 {{ $page := $.Page }}
                                 {{ $flagMap := dict "en" "english" "de" "germany" }}
+                                {{ $langLabelMap := dict "en" "language_english" "de" "language_german" }}
                                 {{ range $.Site.Languages }}
                                   {{ $langCode := .Lang }}
-                                  {{ $langLabel := .LanguageName }}
+                                  {{ $langLabelKey := index $langLabelMap $langCode }}
+                                  {{ $langLabel := i18n $langLabelKey }}
                                   {{ $langFlag := index $flagMap $langCode }}
                                   {{ $targetURL := "" }}
                                   {{ $isActive := eq $langCode $.Site.Language.Lang }}
