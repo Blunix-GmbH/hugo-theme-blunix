@@ -26,7 +26,7 @@
     {{- end -}}
   {{- end -}}
   <link rel="alternate" hreflang="x-default" href="{{ $xDefaultPage.Permalink }}" />
-  <title>{{ if .Title }}{{ .Title }}{{ else }}Blunix GmbH Berlin: Linux Support, Consulting and Hosting{{ end }}</title>
+  <title>{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else if .Title }}{{ .Title }}{{ else }}Blunix GmbH Berlin: Linux Support, Consulting and Hosting{{ end }}</title>
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings{{ end }}" />
   {{ if .Params.backgroundImage }}
   <link rel="preload" href="{{ .Params.backgroundImage }}" as="image" />
