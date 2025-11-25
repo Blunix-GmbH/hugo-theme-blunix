@@ -203,3 +203,23 @@
     line-height: 2.25rem; /* md:leading-normal */
   }
 }
+
+/* Scroll offset for fixed header - ensures anchor links account for sticky navigation */
+.template-sec h1[id],
+.template-sec h2[id],
+.template-sec h3[id],
+.template-sec h4[id],
+.template-sec h5[id],
+.template-sec h6[id] {
+  scroll-margin-top: 100px; /* Adjust based on header height (typically 70-80px + padding) */
+}
+
+/* Also apply to any headings with IDs in blog content */
+.prose h1[id],
+.prose h2[id],
+.prose h3[id],
+.prose h4[id],
+.prose h5[id],
+.prose h6[id] {
+  scroll-margin-top: 100px;
+}
