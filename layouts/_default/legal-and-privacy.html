@@ -11,9 +11,9 @@
 
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
-           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">Home</a></li>
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a></li>
            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
-           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">Legal and Privacy</li>
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">{{ i18n "legal_and_privacy_breadcrumb" }}</li>
         </ul>
     </div>
 </section><!--end section-->
@@ -64,8 +64,8 @@
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.contact.title }}</h2>
                     <p class="text-slate-000 mt-3">
-                        Email: <a href="mailto:{{ .Params.content.contact.email }}" title="Send email to {{ .Params.content.contact.email }}" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.email }}</a></br>
-                        Telephone: <a href="tel:{{ .Params.content.contact.phone | replaceRE " " "" | replaceRE "/" "" }}" title="Call Blunix GmbH" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.phone }}</a>
+                        {{ i18n "email_label" }}: <a href="mailto:{{ .Params.content.contact.email }}" title="Send email to {{ .Params.content.contact.email }}" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.email }}</a></br>
+                        {{ i18n "telephone_label" }}: <a href="tel:{{ .Params.content.contact.phone | replaceRE " " "" | replaceRE "/" "" }}" title="Call Blunix GmbH" class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.phone }}</a>
                     </p>
                 </div>
             </div>
