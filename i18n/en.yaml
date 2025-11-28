@@ -39,3 +39,6 @@
 
 - id: no_description_available
   translation: "No description available."
+
+- id: read_the_post
+  translation: "Read the Post"
