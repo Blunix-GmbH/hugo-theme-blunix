@@ -1,5 +1,5 @@
 <section class="relative table w-full py-36 bg-[url('{{ .Params.background }}')] bg-center bg-no-repeat bg-cover" id="start">
-  <img src="{{ .Params.background }}" srcset="{{ .Params.background | replace ".webp" "-sm.webp" }} 600w, {{ .Params.background }} 1000w" alt="background" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center">
+  <img src="{{ .Params.background }}" srcset="{{ .Params.background | replace ".webp" "-sm.webp" }} 600w, {{ .Params.background }} 1000w" alt="{{ .Params.alt | default "background" }}" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center">
   <div class="absolute inset-0 bg-black opacity-75"></div>
   <div class="container relative">
     <div class="grid grid-cols-1 pb-8 text-center mt-10">

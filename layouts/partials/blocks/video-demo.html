@@ -14,7 +14,14 @@
                 <div class="relative">
                     <img src="{{ .Params.image.src }}" class="rounded-full" alt="{{ .Params.image.alt }}">
                     <div class="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
-                        <a href="#{{ .Params.id }}" onclick="lightbox_open();" data-type="youtube" data-id="placeholder" title="{{ .Params.videoTitle | default "Play video" }}"
+                        {{ $videoId := "placeholder" }}
+                        {{ if .Params.video }}
+                            {{ if findRE "^https?://(www\\.)?(youtube\\.com/watch\\?v=|youtu\\.be/)" .Params.video }}
+                                {{ $videoId = replaceRE "^https?://(www\\.)?(youtube\\.com/watch\\?v=|youtu\\.be/)" "" .Params.video }}
+                                {{ $videoId = replaceRE "&.*$" "" $videoId }}
+                            {{ end }}
+                        {{ end }}
+                        <a href="#{{ .Params.id }}" data-type="youtube" data-id="{{ $videoId }}" title="{{ .Params.videoTitle | default "Play video" }}"
                             class="lightbox size-20 rounded-full shadow-lg dark:shadow-gray-800 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-indigo-600 dark:text-white">
                             <i class="uil uil-play inline-flex items-center justify-center text-4xl"></i>
                         </a>

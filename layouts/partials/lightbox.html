@@ -1,0 +1,144 @@
+<style>
+#fade {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  opacity: .80;
+}
+
+#light {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 1002;
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+}
+
+#boxclose {
+  cursor: pointer;
+  color: #fff;
+  font-size: 31px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 11px 3px;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1003;
+}
+
+.boxclose:before {
+  content: "×";
+}
+
+.video-container {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  background-color: black;
+  aspect-ratio: 16 / 9;
+}
+
+.video-container video,
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 640px) {
+  .video-container {
+    width: 95%;
+  }
+}
+</style>
+
+<!-- Lightbox container -->
+<div id="light">
+    <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+    <div class="video-container">
+        <video style="display: none;">
+        </video>
+        <iframe id="youtube-iframe" style="display: none; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div id="fade" onClick="lightbox_close();"></div>
+
+<script>
+window.document.onkeydown = function(e) {
+  if (!e) {
+    e = event;
+  }
+  if (e.keyCode == 27) {
+    lightbox_close();
+  }
+}
+
+function lightbox_open(videoId) {
+  const lightbox = document.getElementById('light');
+  const fade = document.getElementById('fade');
+  const video = lightbox.querySelector('video');
+  const iframe = document.getElementById('youtube-iframe');
+  
+  lightbox.style.display = 'flex';
+  fade.style.display = 'block';
+  
+  // Check if it's a YouTube video (not "placeholder" and not a file path)
+  if (videoId && videoId !== 'placeholder' && !videoId.includes('.')) {
+    // It's a YouTube video ID
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.style.display = 'block';
+    video.style.display = 'none';
+  } else {
+    // It's a local video file
+    video.src = videoId || 'https://www.blunix.com/assets/images/linux-managed-hosting/placeholder.mp4';
+    video.style.display = 'block';
+    iframe.style.display = 'none';
+    video.load();
+    video.play();
+  }
+}
+
+function lightbox_close() {
+  const lightbox = document.getElementById('light');
+  const fade = document.getElementById('fade');
+  const video = lightbox.querySelector('video');
+  const iframe = document.getElementById('youtube-iframe');
+  
+  lightbox.style.display = 'none';
+  fade.style.display = 'none';
+  
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+  
+  if (iframe) {
+    iframe.src = '';
+  }
+}
+
+// Handle clicks on elements with data-type="youtube"
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-type="youtube"]').forEach(element => {
+    element.addEventListener('click', function(e) {
+      e.preventDefault();
+      const videoId = this.getAttribute('data-id');
+      lightbox_open(videoId);
+    });
+  });
+});
+</script>
+
