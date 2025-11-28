@@ -42,3 +42,24 @@
 
 - id: read_the_post
   translation: "Beitrag lesen"
+
+- id: cta_title
+  translation: "Fragen? Wünsche? Anregungen?"
+
+- id: cta_button
+  translation: "Kontaktieren Sie uns!"
+
+- id: cta_subtitle
+  translation: "Wir freuen uns darauf, von Ihnen zu hören!"
+
+- id: cta_looking_for
+  translation: "Suchen Sie"
+
+- id: cta_or
+  translation: "oder"
+
+- id: cta_contact_url
+  translation: "index.html#kontakt"
+
+- id: cta_contact_title
+  translation: "Kontakt"

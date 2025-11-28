@@ -43,22 +43,5 @@
 
 
 
-<section class="relative md:py-24 py-16" id="questions-contact">
-    <div class="container relative">
-        <div class="grid grid-cols-1 text-center">
-            <h2 class="text-4xl font-bold mb-2">{{ .Params.questions_heading | default "Questions? Requests? Suggestions?" }}</h2>
-            <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">{{ .Params.questions_subheading | default "We are looking forward to hearing from you!" }}</h3>
-            <p class="text-slate-500 max-w-xl text-2xl mx-auto">
-                {{ .Params.questions_text | default "Are you looking for," }}<br>
-                {{ range $index, $link := .Params.service_links }}
-                {{ if gt $index 0 }},<br>{{ end }}
-                <a class="text-blue-500 hover:text-blue-700 font-semibold underline hover:no-underline" href="{{ $link.url }}" title="{{ $link.title }}">{{ $link.text }}</a>
-                {{ end }}?
-            </p>
-            <div class="mt-6">
-                <a href="index.html#contact" title="Contact" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-green-700 border-blue-600 hover:border-green-700 text-white rounded-md mt-4"><i class="uil uil-phone"></i> {{ .Params.questions_cta | default "Contact us Today!" }}</a>
-            </div>
-        </div><!--end grid-->
-    </div><!--end container-->
-</section><!--end section-->
+{{ partial "cta.html" . }}
 {{ end }}
