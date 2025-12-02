@@ -8,16 +8,19 @@
   <meta name="version" content="2.0.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  {{/* Canonical Link */}}
-  <link rel="canonical" href="{{ .Permalink }}" />
+  {{/* Canonical Link - Remove index.html from URLs */}}
+  {{- $canonicalURL := .Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
+  <link rel="canonical" href="{{ $canonicalURL }}" />
   
   {{- if .IsTranslated -}}
-  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{- $currentLangURL := .Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ $currentLangURL }}" />
     {{- range .Translations }}
-  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{- $transLangURL := .Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ $transLangURL }}" />
     {{- end }}
   {{- else }}
-  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ $canonicalURL }}" />
   {{- end }}
   {{- $xDefaultPage := . -}}
   {{- if ne .Language.Lang "en" -}}
@@ -25,7 +28,8 @@
       {{- $xDefaultPage = index . 0 -}}
     {{- end -}}
   {{- end -}}
-  <link rel="alternate" hreflang="x-default" href="{{ $xDefaultPage.Permalink }}" />
+  {{- $xDefaultURL := $xDefaultPage.Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
+  <link rel="alternate" hreflang="x-default" href="{{ $xDefaultURL }}" />
   <title>{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else if .Title }}{{ .Title }}{{ else }}Blunix GmbH Berlin: Linux Support, Consulting and Hosting{{ end }}</title>
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings{{ end }}" />
   {{ if .Params.backgroundImage }}

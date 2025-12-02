@@ -1,4 +1,5 @@
-<meta property="og:url" content="{{ .Permalink }}">
+{{- $cleanURL := .Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
+<meta property="og:url" content="{{ $cleanURL }}">
 
 {{- with or site.Title site.Params.title | plainify }}
   <meta property="og:site_name" content="{{ . }}">
